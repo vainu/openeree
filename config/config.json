@@ -1,0 +1,15 @@
+{
+  "port": 3000,
+  "log": {
+    "name": "opener",
+    "level": "debug"
+  },
+  "db": {
+    "client": "mysql",
+    "host": "127.0.0.1",
+    "user": "",
+    "password": "",
+    "database": "",
+    "defaultLimit": 100
+  }
+}

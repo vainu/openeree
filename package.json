@@ -1,0 +1,32 @@
+{
+  "name": "opener",
+  "version": "0.0.1",
+  "description": "opener",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stagingcode/transparency.git"
+  },
+  "author": "Henrik Peinar",
+  "license": "ISC",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/stagingcode/transparency/issues"
+  },
+  "homepage": "https://github.com/stagingcode/transparency#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "^1.14.2",
+    "bunyan": "^1.5.1",
+    "csv-parse": "^1.0.1",
+    "easy-config": "^0.5.1",
+    "express": "^4.13.4",
+    "knex": "^0.9.0",
+    "mysql": "^2.10.2"
+  }
+}
