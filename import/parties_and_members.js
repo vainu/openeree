@@ -10,6 +10,7 @@ let csv = require('csv-parse');
 let log = require('../lib/log');
 let db = require('../lib/db');
 let async = require('async');
+let moment = require('moment');
 
 // get our data file
 fs.readFile(__dirname + '/../data/parties_and_party_members_14.01.csv', function (err, data) {
@@ -39,12 +40,11 @@ fs.readFile(__dirname + '/../data/parties_and_party_members_14.01.csv', function
             let personName = row[3].split(' ');
             let firstName = personName.shift();
             let lastName = personName.join(' '); // middle names go to last name column
-            let entryDate = row[4].split('-');
             let joinedAt = null;
             let quitDate = row[5];
 
-            if (entryDate.length > 0) {
-                joinedAt = (new Date(entryDate[2], entryDate[1], entryDate[0])).toISOString().substring(0, 10);
+            if (row[4].length > 0) {
+                joinedAt = moment(row[4], 'DD-MM-YYYY').format('YYYY-MM-DD');
             }
 
             let memberId = null;

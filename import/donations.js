@@ -5,6 +5,7 @@ let csv = require('csv-parse');
 let log = require('../lib/log');
 let db = require('../lib/db');
 let async = require('async');
+let moment = require('moment');
 
 // this is import script, sync reading is fine here
 let donationYears = [2013, 2014, 2015];
@@ -28,7 +29,6 @@ async.waterfall([
     function (parties, cb) {
         async.forEachSeries(donationYears, function (year, doneFile) {
             let data = fs.readFileSync(__dirname + '/../data/donators_'+ year +'.csv').toString();
-            console.log('Getting year', year);
 
 
             csv(data.toString(), {delimiter: ','}, function (csvErr, data) {
@@ -57,13 +57,9 @@ async.waterfall([
                     let first_name = name.shift();
                     let last_name = name.join(' ');
 
-                    let birthday = row[0].slice(-11, -1).split('.');
-                    let birthdayDate = new Date(birthday[2], birthday[1], birthday[0]);
-                    let bDay = birthdayDate.toISOString().substring(0, 10);
-                    let halfIdentificationCode =
-                        birthdayDate.getFullYear().toString().slice(-2)
-                        +''+ (0 +''+ (birthdayDate.getMonth())).slice(-2)
-                        +''+ (0 +''+ birthdayDate.getDate()).slice(-2);
+                    let birthday = moment(row[0], 'DD-MM-YYYY');
+                    let bDay = birthday.format('YYYY-MM-DD');
+                    let halfIdentificationCode = birthday.format('YYMMDD');
 
 
                     console.log('Inserting info', bDay, halfIdentificationCode);
