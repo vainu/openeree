@@ -10,6 +10,6 @@
     "user": "",
     "password": "",
     "database": "",
-    "defaultLimit": 100
+    "defaultLimit": 900000
   }
 }
