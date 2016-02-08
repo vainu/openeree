@@ -42,7 +42,7 @@ app.post('*', notAllowed);
 app.delete('*', notAllowed);
 app.patch('*', notAllowed);
 
-app.use('/',function(req, res, next){
+app.get('/',function(req, res, next){
     res.sendFile(__dirname + '/index.html');
 });
 
