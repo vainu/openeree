@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
     req.log = logger.child({reqId: req.id});
     next();
 });
-
+app.use(express.static('public'));
 // Attach trace level request logging
 // Please note that this logging is performance heavy and it is not advisable to have this on in production
 app.use(function (req, res, next) {
@@ -42,7 +42,9 @@ app.post('*', notAllowed);
 app.delete('*', notAllowed);
 app.patch('*', notAllowed);
 
-
+app.use('/',function(req, res, next){
+    res.sendFile(__dirname + '/index.html');
+});
 
 // attach our routes
 app.use('/api', allowCrossDomain, require('./routes')());
