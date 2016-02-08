@@ -50,7 +50,7 @@ var App = new(function(){
 				var data = google.visualization.arrayToDataTable(graphData);
 				console.log('DRAWING');
 				var options = {
-			        title: 'Goverment Funding',
+			        title: 'Government Funding',
 			        chartArea: {width: '50%'},
 			        hAxis: {
 			          title: 'Funding',
@@ -71,7 +71,7 @@ var App = new(function(){
 	function drawFundingMemberFeeChart(data){
 		//modify data
 		var graphData = [];
-		graphData.push(['Party','Goverment Funding','Member Fee','Donations']);
+		graphData.push(['Party','Government Funding','Member Fee','Donations']);
 		async.each(data, function(party, callback){
 			graphData.push([party.name, party.gov_funding,party.member_fee,party.donation_sum]);
 			callback();
@@ -80,7 +80,7 @@ var App = new(function(){
 				var data = google.visualization.arrayToDataTable(graphData);
 				console.log('DRAWING');
 				var options = {
-			        title: 'Goverment Funding, Member fee & Donations',
+			        title: 'Government Funding, Member fee & Donations',
 			        chartArea: {width: '50%'},
 			        hAxis: {
 			          title: '',
