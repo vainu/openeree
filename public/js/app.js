@@ -71,6 +71,7 @@ var App = new(function(){
 				var data = google.visualization.arrayToDataTable(graphData);
 				console.log('DRAWING');
 				var options = {
+<<<<<<< HEAD
 				  hAxis: {
 				    titleTextStyle: {color: '#607d8b'}, 
 				    gridlines: { count:0}, 
@@ -102,6 +103,18 @@ var App = new(function(){
 				      datalessRegionColor: '#37474f',
 				      displayMode: 'regions'
 				    };
+=======
+			        title: 'Government Funding',
+			        chartArea: {width: '50%'},
+			        hAxis: {
+			          title: 'Funding',
+			          minValue: 0
+			        },
+			        vAxis: {
+			          title: 'Party'
+			        }
+			      };
+>>>>>>> 0fb70393a00e8e55018c64d9f086ee2a81cf4ddc
 
 				var chart = new google.visualization.BarChart(document.getElementById('top_funding_chart'));
       			chart.draw(data, options);
@@ -113,7 +126,7 @@ var App = new(function(){
 	function drawFundingMemberFeeChart(data){
 		//modify data
 		var graphData = [];
-		graphData.push(['Party','Goverment Funding','Member Fee','Donations']);
+		graphData.push(['Party','Government Funding','Member Fee','Donations']);
 		async.each(data, function(party, callback){
 			graphData.push([party.name, party.gov_funding,party.member_fee,party.donation_sum]);
 			callback();
@@ -122,6 +135,7 @@ var App = new(function(){
 				var data = google.visualization.arrayToDataTable(graphData);
 				console.log('DRAWING');
 				var options = {
+<<<<<<< HEAD
 				  hAxis: {
 				    titleTextStyle: {color: '#607d8b'}, 
 				    gridlines: { count:0}, 
@@ -153,6 +167,18 @@ var App = new(function(){
 				      datalessRegionColor: '#37474f',
 				      displayMode: 'regions'
 				    };
+=======
+			        title: 'Government Funding, Member fee & Donations',
+			        chartArea: {width: '50%'},
+			        hAxis: {
+			          title: '',
+			          minValue: 0
+			        },
+			        vAxis: {
+			          title: 'Party'
+			        }
+			      };
+>>>>>>> 0fb70393a00e8e55018c64d9f086ee2a81cf4ddc
 
 				var chart = new google.visualization.BarChart(document.getElementById('donation_funding_chart'));
       			chart.draw(data, options);
