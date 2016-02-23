@@ -54,8 +54,8 @@ async.waterfall([
 
                     let name = row[0].split('(')[0].trim().split(' ');
 
-                    let first_name = name.shift();
-                    let last_name = name.join(' ');
+                    let first_name = name.shift().toLowerCase().split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+                    let last_name = name.join(' ').toLowerCase().split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
 
                     let birthday = moment(row[0], 'DD-MM-YYYY');
                     let bDay = birthday.format('YYYY-MM-DD');

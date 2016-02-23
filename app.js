@@ -8,13 +8,7 @@ let bodyParser = require('body-parser');
 let db = require('./lib/db');
 
 let app = express();
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-    next();
-}
 // this is JSON API, we'll need to use express json bodyParser
 app.use(bodyParser.json());
 
@@ -23,7 +17,7 @@ app.use(function (req, res, next) {
     req.log = logger.child({reqId: req.id});
     next();
 });
-app.use(express.static('public'));
+
 // Attach trace level request logging
 // Please note that this logging is performance heavy and it is not advisable to have this on in production
 app.use(function (req, res, next) {
@@ -42,12 +36,8 @@ app.post('*', notAllowed);
 app.delete('*', notAllowed);
 app.patch('*', notAllowed);
 
-app.get('/',function(req, res, next){
-    res.sendFile(__dirname + '/index.html');
-});
-
 // attach our routes
-app.use('/api', allowCrossDomain, require('./routes')());
+app.use('/api', require('./routes')());
 
 // bind to port defined in config
 app.listen(config.port, function () {

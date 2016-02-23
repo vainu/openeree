@@ -5,6 +5,7 @@ let csv = require('csv-parse');
 let log = require('../lib/log');
 let db = require('../lib/db');
 let async = require('async');
+let moment = require('moment');
 
 
 // get our data file
@@ -29,7 +30,7 @@ fs.readFile(__dirname + '/../data/procurement_data.csv', function (err, data) {
             let providerReg = row[5];
             let realPrice = row[6].replace(',', '.');
             let signedOn = row[7].split(' ')[0].split('.');
-            let signedOnDate = (new Date(signedOn[2], signedOn[1], signedOn[0])).toISOString().substring(0, 10);
+            let signedOnDate = moment(signedOn, 'DD-MM-YYYY').format('YYYY-MM-DD');
             let status = null;
             switch (row[8]) {
                 case 'lõpetatud':
@@ -53,6 +54,7 @@ fs.readFile(__dirname + '/../data/procurement_data.csv', function (err, data) {
 
             // start the magic
             let acquirerDb = null;
+            let reqCompanyId = null;
 
             db('company')
                 .select()
@@ -87,6 +89,7 @@ fs.readFile(__dirname + '/../data/procurement_data.csv', function (err, data) {
                     }
                 })
                 .then(function (reqDbId) {
+                    reqCompanyId = reqDbId;
 
                     return db('procurement')
                             .insert({
@@ -99,6 +102,14 @@ fs.readFile(__dirname + '/../data/procurement_data.csv', function (err, data) {
                                 acquirer: acquirerDb,
                                 provider: reqDbId
                             });
+                })
+                .then(function () {
+                    return db('company')
+                        .increment('procs_provided', 1).where({id: acquirerDb});
+                })
+                .then(function () {
+                    return db('company')
+                        .increment('procs_acquired', 1).where({id: reqCompanyId});
                 })
                 .then(() => done(), (err) => done(err))
                 .catch((err) => done(err));

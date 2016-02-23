@@ -34,12 +34,12 @@ fs.readFile(__dirname + '/../data/parties_and_party_members_14.01.csv', function
         // 5 - 'lahk_seisu_kpv',
         // 6 - 'lteate_kpv'
         async.eachSeries(rows, function (row, done) {
-            let regCode = row[0];
+            let regCode = row[0].replace(/\s/g, '');
             let partyName = row[1];
             let identificationCode = row[2];
             let personName = row[3].split(' ');
-            let firstName = personName.shift();
-            let lastName = personName.join(' '); // middle names go to last name column
+            let firstName = personName.shift().toLowerCase().split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+            let lastName = personName.join(' ').toLowerCase().split(' ').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' '); // middle names go to last name column
             let joinedAt = null;
             let quitDate = row[5];
 

@@ -8,16 +8,47 @@ let dbUtils = require('../../lib/dbUtils');
 module.exports = function () {
     let app = express.Router();
 
-    app.get('/', function (req, res) {
-        let q = db.select().from('party');
+    let companiesQ = db
+        .select()
+        .join('company', 'company_employee.company_id', 'company.id')
+        .from('company_employee');
 
-        dbUtils.sendResponse(q, req, res);
+    app.get('/', function (req, res) {
+        let q = db
+            .select()
+            .from('party');
+
+        let metaQ = db.select('field', 'value').from('party_metadata');
+
+        dbUtils.sendResponse(q, req, res, null, [{
+                q: metaQ,
+                field: 'metadata',
+                where: 'party_id',
+                reduce: function (obj, value) {
+                    obj[value.field] = value.value;
+                    return obj;
+                }
+            }]
+        );
     });
 
     app.get('/:id', function (req, res) {
-        let q = db.select().from('party').where({ id: req.params.id });
+        let q = db
+            .select()
+            .from('party')
+            .where({ id: req.params.id });
 
-        dbUtils.sendResponse(q, req, res, true);
+        let metaQ = db.select('field', 'value').from('party_metadata');
+
+        dbUtils.sendResponse(q, req, res, true, [{
+            q: metaQ,
+            field: 'metadata',
+            where: 'party_id',
+            reduce: function (obj, value) {
+                obj[value.field] = value.value;
+                return obj;
+            }
+        }]);
     });
 
     app.get('/:id/members', function (req, res) {
@@ -37,7 +68,11 @@ module.exports = function () {
             .from('donation')
             .where({party_id: req.params.id});
 
-        dbUtils.sendResponse(q, req, res);
+        dbUtils.sendResponse(q, req, res, false, [{
+            q: companiesQ,
+            field: 'companies',
+            where: 'employee_id'
+        }]);
     });
 
     app.get('/:id/donations/sum', function (req, res) {
@@ -49,7 +84,11 @@ module.exports = function () {
             .groupBy('member_id')
             .where({party_id: req.params.id});
 
-        dbUtils.sendResponse(q, req, res);
+        dbUtils.sendResponse(q, req, res, false, [{
+            q: companiesQ,
+            field: 'companies',
+            where: 'employee_id'
+        }]);
     });
 
     return app;

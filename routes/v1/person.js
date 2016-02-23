@@ -19,5 +19,35 @@ module.exports = function () {
         dbUtils.sendResponse(q, req, res, true);
     });
 
+    app.get('/:id/full', function (req, res) {
+        let q = db
+            .select('*', 'person.id AS person_id')
+            .leftJoin('party_member', 'person.id', 'party_member.member_id')
+            .leftJoin('party', 'party_member.party_id', 'party.id')
+            .from('person')
+            .where({'person.id': req.params.id});
+
+        let companiesQ = db
+            .select()
+            .join('company', 'company_employee.company_id', 'company.id')
+            .from('company_employee');
+
+        let donationsQ = db
+            .select()
+            .from('donation');
+
+        dbUtils.sendResponse(q, req, res, true, [{
+            q: companiesQ,
+            field: 'companies',
+            where: 'company_employee.employee_id',
+            whereId: 'person_id'
+        }, {
+            q: donationsQ,
+            field: 'donations',
+            where: 'member_id',
+            whereId: 'person_id'
+        }]);
+    });
+
     return app;
 };

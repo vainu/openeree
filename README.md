@@ -32,6 +32,9 @@ Importing is done in 4 different steps and they go as following:
 `node import/parties_and_members.js` - Imports parties and their members    
 `node import/donations.js` - Imports donations    
 `node import/procurements.js` - Imports procurements data    
+`node import/party_metadata.js` - Imports party metadata
+`node import/company_roles.js` - Imports company roles
+`node import/company_employees.js` - Imports company employees
 
 Please note that the order is important as donations and procurements imports expect parties table to be populated.
 Warning: Imports need elevated access for the DB to create tables and insert data. You can specify DB user for imports adding after imports:    
@@ -74,6 +77,9 @@ Returns person object
     "total_amount": 600000
 }
 ```
+## Person `./person/:id/full`
+Returns full person object with his company relations, donations and party membership
+
 
 ## Parties `./party`
 Returns list of all parties in the DB
@@ -145,3 +151,62 @@ Returns procurement object
     "acquirer_reg_code": "80235484"
 }
 ```
+
+## Companies `./company`
+Returns list of company objects with employees
+
+## Company `./company/:id`
+Returns company object
+
+```json
+{
+    "id": 7,
+    "created_at": "2016-02-22T15:58:49.000Z",
+    "updated_at": "2016-02-22T15:58:49.000Z",
+    "name": "aktsiaselts Olerex",
+    "reg_code": "10136870"
+}
+```
+
+## Full company details `./company/:id/full`
+Returns company objects with employees and company procurement data
+
+## Company employees `./company/:id/employees`
+Returns list of company employees which are person objects including role in company 
+
+```json
+{
+    "id": 19,
+    "created_at": "2016-02-22T15:59:44.000Z",
+    "updated_at": "2016-02-22T15:59:44.000Z",
+    "company_id": 7,
+    "employee_id": 61588,
+    "role_id": 19,
+    "first_name": "Piret",
+    "last_name": "Miller",
+    "birthday": null,
+    "personal_identification": "47307152772",
+    "half_personal_identification": null,
+    "donator": null,
+    "short": "JUHL",
+    "long": "Juhatuseliige"
+}
+```
+
+## Aggregated proc acquirers `./aggregated/mostprocsby`
+Lists procs with total sum (over all procs) by acquirers
+
+## Aggregated proc acquirers `./aggregated/mostprocsby`
+Includes all procs
+
+## Aggregated proc providers `./aggregated/mostprocsto`
+Lists procs with total sum (over all procs) by providers
+
+## Aggregated proc providers `./aggregated/mostprocsto/withprocs`
+Includes all procs
+
+## Some other useful queries
+`/aggregated/mostprocsto?order=-total_amount` - Top proc providers with procs
+`/aggregated/mostprocsby?order=-total_amount` - Top proc acquirers with procs
+
+Use `/withprocs` with these calls to also get the procs, but be aware, many of these have hundreds of procs so use `?limit` when needed

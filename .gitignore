@@ -40,3 +40,6 @@ node_modules
 
 # Ignore env specific configuraiton files to avoid accidental leaks
 config/config.*.json
+
+# Ignore lock files
+*~lock*
