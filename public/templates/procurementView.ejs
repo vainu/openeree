@@ -5,6 +5,8 @@
 	<h2 class="text-center"><%= procurement.description %></h2>
 	<h3>Hanke võitja</h3>
 	<p><a href="company/<%= procurement.provider %>"><%= procurement.provider_name %></a> <%= procurement.provider_reg_code %></p>
+	<h3>Riigihanke viide</h3>
+	<p><a href="<%= procurement.proc_link %>" target="_new"><%= procurement.proc_link %></a></p>
 	<h3>Hanke staatus</h3>
 	<p><%= procurement.status %></p>
 	<h3>Sõlmitud lepingu maksumus</h3>
