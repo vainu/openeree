@@ -1,0 +1,10 @@
+<%= this.partial({url: 'templates/header.ejs'}) %>
+<%= this.partial({url: 'templates/sidebar.ejs'}) %>
+<div class="content">
+	<h2 class="text-center">Hankijad</h2>
+	<ul class="top-list">
+		<% for(var key in procurements){%>
+			<li><span class="name"><a href="company/<%= procurements[key].company_id %>"><%= procurements[key].acquirer_name %></a></span><span class="amount"><%= procurements[key].total_amount %>€</span></li>
+		<% } %>
+	</ul>
+</div>

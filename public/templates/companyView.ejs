@@ -1,0 +1,23 @@
+<%= this.partial({url: 'templates/header.ejs'}) %>
+<%= this.partial({url: 'templates/sidebar.ejs'}) %>
+<div class="content">
+	<h2 class="text-center"><%= company.name %></h2>
+	<h3>Juhatus</h3>
+	<ul>
+	<% for(var key in company.employees){%>
+		<li>
+			<span class="name"><a href="person/<%= company.employees[key].id %>"><%= company.employees[key].first_name %> <%= company.employees[key].last_name %></a></span>
+		</li>
+	<% } %>
+	</ul>
+	<h3>Võidetud hanked</h3>
+	<ul class="procsTo">
+		<% for(var key in company.procsTo){%>
+			<li>
+				<span class="name"><a href="procurements/<%= company.procsTo[key].id %>"><%= company.procsTo[key].description %></a></span>
+				<span class="amount"><%= company.procsTo[key].contract_price %>€</span>
+			</li>
+		<% } %>
+	</ul>
+	
+</div>

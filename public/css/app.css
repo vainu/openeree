@@ -1,3 +1,11 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Calibri, Helvetica, Arial;
+}
+.text-center{
+    text-align: center;
+}
 h1{
     position: fixed;
     font-size: 2.5em;
@@ -14,3 +22,32 @@ span.small{
     font-size: .15em;
     letter-spacing: 0;
 }
+
+.sidebar{
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    float: left;
+    padding-left: 20px;
+    padding-top: 120px;
+    height: 100%;
+    box-sizing: border-box;
+    width: 250px;
+    background-color: #F9F8F8;
+}
+    .sidebar li{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+.content{
+    max-width: 980px;
+    margin: auto;
+    padding-top: 120px;
+}
+ul.top-list{
+
+}
+    ul.top-list .name{
+        margin-right: 20px;
+    }

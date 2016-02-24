@@ -1,0 +1,25 @@
+<%= this.partial({url: 'templates/header.ejs'}) %>
+<%= this.partial({url: 'templates/sidebar.ejs'}) %>
+
+<div class="content">
+	<h2 class="text-center"><%= party.name %></h2>
+	<h3>Koduleht</h3>
+	<p><a href="<%= party.metadata.website %>" target="_new"><%= party.metadata.website %></a></p>
+	<h3>Aadress</h3>
+	<p><%= party.metadata.street_address %></p>
+	<h3>Liikmete arv</h3>
+	<p><%= party.metadata.member_count %></p>
+	<h3>Riigitoetus</h3>
+	<p><%= party.metadata.gov_funding %>€</p>
+	<h3>Annetused erakonnale</h3>
+	<p><%= party.metadata.donation_sum %>€</p>
+	<h3>Top Annetajad</h3>
+	<ul>
+		<% for(var key in donators){%>
+			<li>
+				<span class="name"><a href="person/<%= donators[key].id %>"><%= donators[key].first_name %> <%= donators[key].last_name %></a></span>
+				<span class="amount"><%= donators[key].total_amount %>€</span>
+			</li>
+		<% } %>
+	</ul>
+</div>

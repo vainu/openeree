@@ -1,0 +1,17 @@
+<%= this.partial({url: 'templates/header.ejs'}) %>
+<%= this.partial({url: 'templates/sidebar.ejs'}) %>
+<div class="content">
+	<h2 class="text-center"><%= person.first_name %> <%= person.last_name %></h2>
+	<h3>Kuulub juhatusse</h3>
+	<ul>
+		<% for(var key in person.companies){%>
+			<li>
+				<span class="name"><a href="company/<%= person.companies[key].id %>"><%= person.companies[key].name %></a></span>
+			</li>
+		<% } %>
+	</ul>
+	<% if(person.member_id){%>
+	<h3>Kuulub erakonda</h3>
+	<p><a href="party/<%= person.party_id %>"><%= person.name %></a></p>
+	<% } %>
+</div>

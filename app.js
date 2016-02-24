@@ -11,7 +11,7 @@ let app = express();
 
 // this is JSON API, we'll need to use express json bodyParser
 app.use(bodyParser.json());
-
+app.use(express.static('public'));
 // Attach logger to req
 app.use(function (req, res, next) {
     req.log = logger.child({reqId: req.id});
@@ -47,7 +47,9 @@ app.patch('*', notAllowed);
 
 // attach our routes
 app.use('/api', allowCrossDomain, require('./routes')());
-
+app.use('/', function(req, res){
+	res.sendfile('index.html');
+});
 // bind to port defined in config
 app.listen(config.port, function () {
     logger.info('Started on port', config.port);

@@ -3,7 +3,6 @@ var API = new(function() {
   var CACHE = {};
   var CACHE_UPDATE = null;
   var CACHE_MAP = [
-    'party'
   ];
 
   var HOST = 'http://opener.ee/api/v1/';
@@ -40,8 +39,73 @@ var API = new(function() {
     });
   }
 
+  var procurements = {
+    getById : function(id, cb){
+      get('procurement/' + id, function(data){
+        cb(data);
+      });
+    },
+    getTopWinners : function(cb){
+      get('aggregated/mostprocsto?order=-total_amount', function(data){
+        cb(data);
+      });
+    },
+    getTopProcurers : function(cb){
+      get('aggregated/mostprocsby?order=-total_amount', function(data){
+        cb(data);
+      })
+    }
+  }
+
+  var company = {
+    getById : function(id, cb){
+      get('company/'+id+'/full', function(data){
+        cb(data);
+      });
+    }
+  }
+
+  var person = {
+    getById : function(id, cb){
+      get('person/'+id+'/full', function(data){
+        cb(data);
+      })
+    }
+  }
+
+  var party = {
+    getAll : function(cb){
+      get('/party', function(data){
+        cb(data);
+      });
+    },
+    getById : function(id, cb){
+      get('/party/' + id, function(data){
+        cb(data);
+      })
+    }
+  }
+
+  var donators = {
+    getTop : function(cb){
+      get('/', function(data){
+        cb(data);
+      });
+    },
+    byParty : function(id, cb){
+      get('party/'+id+'/donations/sum?order=-total_amount', function(data){
+        cb(data);
+      })
+    }
+  }
+
   return {
     get: get,
+    procurements : procurements,
+    company : company,
+    person : person,
+    party : party,
+    donators : donators,
     getPartyMemberCounts : getPartyMemberCounts,
     loadCache: loadCache,
     CACHE: CACHE

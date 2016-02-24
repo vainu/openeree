@@ -1,0 +1,14 @@
+<%= this.partial({url: 'templates/header.ejs'}) %>
+<%= this.partial({url: 'templates/sidebar.ejs'}) %>
+
+<div class="content">
+	<h2 class="text-center"><%= procurement.description %></h2>
+	<h3>Hanke võitja</h3>
+	<p><a href="company/<%= procurement.provider %>"><%= procurement.provider_name %></a> <%= procurement.provider_reg_code %></p>
+	<h3>Hanke staatus</h3>
+	<p><%= procurement.status %></p>
+	<h3>Sõlmitud lepingu maksumus</h3>
+	<p><%= procurement.contract_price %>€</p>
+	<h3>Lepingu tegelik maksumus</h3>
+	<p><%= procurement.end_price %>€</p>
+</div>
