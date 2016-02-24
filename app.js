@@ -25,6 +25,15 @@ app.use(function (req, res, next) {
     next();
 });
 
+//CORS middleware
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'example.com');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
 // As this is read-only API, let's send 405 for other CRUD requests
 // We intentionally block only these 3. We do not want to explicitly allow GET as this might have unexpected results
 // ex. consider OPTIONS request.
@@ -37,7 +46,7 @@ app.delete('*', notAllowed);
 app.patch('*', notAllowed);
 
 // attach our routes
-app.use('/api', require('./routes')());
+app.use('/api', allowCrossDomain, require('./routes')());
 
 // bind to port defined in config
 app.listen(config.port, function () {
