@@ -1,5 +1,5 @@
 # openeree
-Opener.ee is open-data initiative, to increase transparency among public procurements and political connections. 
+Opener.ee is open-data initiative, to increase transparency among public procurements, companies and political connections. 
 
 Opener represents data from different Estonian governmental registries:
 
