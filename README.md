@@ -1,6 +1,20 @@
-# opener
-Read-only API for Estonian political information about donations and parties.
+# openeree
+Opener.ee is open-data initiative, to increase transparency among public procurements and political connections. 
 
+Opener represents data from different Estonian governmental registries:
+
+1. Procurements data. Ministry of Finance > E-Procurement Estonia Register:
+https://riigihanked.riik.ee/register/
+2. Donations to parties. Supervisory commission of party fundings: 
+http://www.erjk.ee/et/aruanded/erakondade-tulud-ja-laekumised
+3. Party members. Centre of Registers and Information Systems - Political parties  
+https://ariregister.rik.ee/erakonnad.py?
+4. Companies and members of board data. 
+https://www.inforegister.ee/ // https://ariregister.rik.ee/index.py
+
+Period: 2013 - 2015 
+
+Read-only API of Estonian political parties, donations, public procurements and related companies board members.
 
 # Technical details
 This API has been written in ES6 using node.JS version 4.
