@@ -19,5 +19,13 @@
 			</li>
 		<% } %>
 	</ul>
-	
+	<h3>Korraldatud hanked</h3>
+	<ul class="procsBy">
+		<% for(var key in company.procsBy){%>
+			<li>
+				<span class="name"><a href="procurements/<%= company.procsBy[key].id %>"><%= company.procsBy[key].description %></a></span>
+				<span class="amount"><%= company.procsBy[key].contract_price %>€</span>
+			</li>
+		<% } %>
+	</ul>
 </div>
