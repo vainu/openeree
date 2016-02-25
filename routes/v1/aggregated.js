@@ -109,5 +109,18 @@ module.exports = function () {
         }, employeeSubQ]);
     });
 
+    app.get('/donations', function (req, res) {
+        let donationsQ = db
+            .select('*')
+            .sum('amount AS total_amount')
+            .join('party', 'donation.party_id', 'party.id')
+            .join('person', 'donation.member_id', 'person.id')
+            .from('donation')
+            .groupBy('year')
+            .groupBy('member_id');
+
+        dbUtils.sendResponse(donationsQ, req, res);
+    });
+
     return app;
 };

@@ -5,7 +5,7 @@ var API = new(function() {
   var CACHE_MAP = [
   ];
 
-  var HOST = 'http://opener.ee/api/v1/';
+  var HOST = 'http://'+ window.location.host +'/api/v1/';
 
   function get(path, cb, nocache) {
     if (CACHE.hasOwnProperty(path) && !nocache) {
@@ -15,6 +15,18 @@ var API = new(function() {
         cb(data);
       });
     }
+  }
+
+  function getSearch(search, cb) {
+    $.when(
+        $.get(HOST + 'party?search=name:'+ search),
+        $.get(HOST + 'person?search=first_name:'+ search +';last_name:'+ search),
+        $.get(HOST + 'company?search=name:'+ search)
+    ).then(function (parties, persons, companies) {
+        cb(null, parties, persons, companies);
+    }, function (err) {
+        cb(err);
+    });
   }
 
   function loadCache() {
@@ -101,6 +113,7 @@ var API = new(function() {
 
   return {
     get: get,
+    getSearch: getSearch,
     procurements : procurements,
     company : company,
     person : person,

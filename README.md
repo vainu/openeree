@@ -64,7 +64,7 @@ Endpoints also provide limiting, offseting, ordering and field select specifying
 `?order=[field, -field]` - Default ordering is ASC, prepend field name with - (minus) to change the ordering to DESC. Supports multi-field ordering     
 `?limit=100` - Default limit is 100    
 `?offset=100` - Offsets response.     
-
+`?search=field=exactValue;another_field:likeValue` - Adds where to the query. If = is used, it'll match exactly, if : is used, it'll use "like" operator.
 
 
 ## Persons `./person`

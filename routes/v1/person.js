@@ -33,7 +33,8 @@ module.exports = function () {
             .from('company_employee');
 
         let donationsQ = db
-            .select()
+            .select('*', 'name AS party_name')
+            .join('party', 'donation.party_id', 'party.id')
             .from('donation');
 
         dbUtils.sendResponse(q, req, res, true, [{
