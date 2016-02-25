@@ -23,7 +23,7 @@ module.exports = function () {
         let q = db
             .select('*', 'person.id AS person_id')
             .leftJoin('party_member', 'person.id', 'party_member.member_id')
-            .leftJoin('party', 'party_member.party_id', 'party.id')
+            .leftJoin('party', 'party_member.party_id', 'party.id','party.name')
             .from('person')
             .where({'person.id': req.params.id});
 
