@@ -5,7 +5,7 @@ var API = new(function() {
   var CACHE_MAP = [
   ];
 
-  var HOST = 'http://'+ window.location.host +'/api/v1/';
+  var HOST = 'http://opener.ee/api/v1/';
 
   function get(path, cb, nocache) {
     if (CACHE.hasOwnProperty(path) && !nocache) {
