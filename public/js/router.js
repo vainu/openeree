@@ -60,7 +60,22 @@ Router.use('/donators/top', function(req){
   API.donators.getTop(function(data){
     Renderer.render('topDonators', req, {donators : data});
   })
-})
+});
+
+Router.use('/search/:search', function (req) {
+  API.getSearch(req.params.search, function (err, parties, persons, companies) {
+    if (err) {
+      console.error(err);
+    }
+
+    console.log('Search results', {
+      'parties': parties[0],
+      'persons': persons[0],
+      'companies': companies[0]
+    });
+    Renderer.render('landing', req, {});
+  })
+});
 
 Router.use('*', function(req) {
   Renderer.render('404', req,{});

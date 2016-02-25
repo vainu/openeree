@@ -32,7 +32,7 @@ var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     next();
-}
+};
 
 // As this is read-only API, let's send 405 for other CRUD requests
 // We intentionally block only these 3. We do not want to explicitly allow GET as this might have unexpected results
@@ -47,9 +47,6 @@ app.patch('*', notAllowed);
 
 // attach our routes
 app.use('/api', allowCrossDomain, require('./routes')());
-app.use('/', function(req, res){
-	res.sendfile('index.html');
-});
 // bind to port defined in config
 app.listen(config.port, function () {
     logger.info('Started on port', config.port);
