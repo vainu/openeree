@@ -1,10 +1,20 @@
 <%= this.partial({url: 'templates/header.ejs'}) %>
 <%= this.partial({url: 'templates/sidebar.ejs'}) %>
-<div class="content">
-	<h2 class="text-center">Hangete võitjad</h2>
-	<ul class="top-list">
-		<% for(var key in procurements){%>
-			<li><span class="name"><a href="company/<%= procurements[key].company_id %>"><%= procurements[key].provider_name %></a></span><span class="amount"><%= procurements[key].total_amount %>€</span></li>
-		<% } %>
-	</ul>
+
+<div class="medium-9 large-10 columns content">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2 class="page-title">Hangete võitjad</h2>
+
+			<ul class="top-list">
+				<% for(var key in procurements){%>
+					<li><span class="name">
+						<a href="company/<%= procurements[key].company_id %>"><%= procurements[key].provider_name %></a></span>
+						<span class="amount"><%= procurements[key].total_amount %> <span class="currency">€</span></span>
+					</li>
+				<% } %>
+			</ul>
+
+		</div>
+	</div>
 </div>

@@ -1,13 +1,20 @@
 <%= this.partial({url: 'templates/header.ejs'}) %>
 <%= this.partial({url: 'templates/sidebar.ejs'}) %>
 
-<div class="content">
-	<h2 class="text-center">Erakonnad</h2>
-	<ul>
-		<% for(var key in parties){%>
-			<li>
-				<span class="name"><a href="party/<%= parties[key].id %>"><%= parties[key].name %></a></span>
-			</li>
-		<% } %>
-	</ul>
+<div class="medium-9 large-10 columns content party-list">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2 class="page-title">Erakonnad</h2>
+			<% for(var key in parties){%>
+				<div class="medium-6 large-4 columns text-center">
+					<a href="party/<%= parties[key].id %>" class="list party">
+						<div class="side-color" style="background-color: <%= parties[key].metadata.color %>"></div>
+						<img class="party-image" src="<%= parties[key].metadata.image %>" alt="">
+						<h4><%= parties[key].name %></h4>
+					</a>
+				</div>
+			<% } %>
+		</div>
+	</div>
+	
 </div>

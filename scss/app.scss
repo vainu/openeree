@@ -4,29 +4,17 @@
 
 // Main Colors
 
-$pink: #e65c85;
-$blue: #00346a;
-$purple: #23213a;
-$beige: #00346a;
-$lightBeige: #fff9f2;
-$seperatorLight: #f0ebe7;
-$white: #fff;
-$textDark: #55556D;
+$white: #FFF;
+$lightGrey: #EDEFF3;
+$darkBlue: #1D2438;
+$lightBlue: #747D94;
 
-// Font Styles
-
-$body-font-family: 'Biko';
-$header-font-family: 'Biko';
-$header-color: $blue;
-$header-font-weight: bold;
-
-$switch-background: #DBDCE4;
-$switch-background-active: $pink;
+$header-color: $darkBlue;
+$header-font-family: 'Roboto';
+$header-font-weight: 300;
 
 @import 'foundation';
 @import 'motion-ui';
-
-
 
 @include foundation-global-styles;
 @include foundation-grid;
@@ -67,10 +55,111 @@ $switch-background-active: $pink;
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
-::-webkit-scrollbar { 
-    display: none; 
+body {
+	background-color: $lightGrey;
+	font-family: 'Roboto', sans-serif;
 }
+.sidebar {
+	height: 100%;
+	background-color: $darkBlue;
+	position: fixed;
 
-::-moz-scrollbar { 
-    display: none; 
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#202448+0,3e1c3f+100 */
+	background: #202448; /* Old browsers */
+	background: -moz-linear-gradient(top,  #202448 0%, #3e1c3f 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #202448 0%,#3e1c3f 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #202448 0%,#3e1c3f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#202448', endColorstr='#3e1c3f',GradientType=0 ); /* IE6-9 */
+
+	.logo {
+		max-width: 160px;
+		margin: 40px auto 20px;
+		display: block;
+	}
+	ul {
+		margin: 80px 0 0;
+		li {
+			list-style: none;
+			padding: 20px 0;
+			border-bottom: 1px solid #3B3054;
+			a {
+				color: $white;
+				padding-left: 20px;
+				font-weight: 500;
+			}
+		}
+	}
+}
+.page-title {
+	margin: 40px 0;
+	color: $darkBlue;
+}
+.top-list {
+	list-style: none;
+	margin: 0;
+	li {
+		background-color: $white;
+		padding: 24px;
+		margin-bottom: 20px;
+		box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+		transition: all 0.5s ease;
+		.amount {
+			float: right;
+			font-weight: 400;
+			font-size: rem-calc(20);
+			color: $lightBlue;
+			.currency {
+				font-weight: bold;
+			}
+		}
+		.name a{
+			color: lighten($darkBlue, 10%);
+			font-weight: 500;
+			font-size: rem-calc(18);
+		}
+		&:hover {
+	    	transform: scale(1.02);
+	    	transition: all 0.5s ease;
+	    }
+	}
+}
+.content.party-list {
+	.party {
+		background-color: #FFF;
+	    position: relative;
+	    display: block;
+	    padding: 40px 20px;
+	    margin-bottom: 20px;
+	    border-radius: 4px;
+	    overflow: hidden;
+	    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+	    transition: all 0.5s ease;
+	    .party-image {
+	    	max-width: 60px;
+	    	display: block;
+	    	margin: 0 auto 20px;
+	    }
+	    .side-color {
+	    	position: absolute;
+		    height: 100%;
+		    width: 4px;
+		    left: 0;
+		    top: 0;
+		    bottom: 0;
+		    transition: all 0.3s ease;
+	    }
+	    h4 {
+	    	color: lighten($darkBlue, 10%);
+    		font-weight: bold;
+    		font-size: 14px;
+	    }
+	    &:hover {
+	    	.side-color {
+	    		width: 20px;
+	    		transition: all 0.3s linear;
+	    	}
+	    	transform: scale(1.05);
+	    	transition: all 0.5s ease;
+	    }
+	}
 }
