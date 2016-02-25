@@ -6,6 +6,16 @@
   "scripts": {
     "test": "npm test"
   },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-rename" : "*",
+    "gulp-util" : "*",
+    "vinyl-ftp" : "*"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stagingcode/transparency.git"
