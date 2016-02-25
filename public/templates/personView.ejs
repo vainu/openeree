@@ -14,4 +14,14 @@
 	<h3>Kuulub erakonda</h3>
 	<p><a href="party/<%= person.party_id %>"><%= person.name %></a></p>
 	<% } %>
+	<h3>Annetused</h3>
+	<ul>
+		<% for(var key in person.donations){%>
+			<li>
+				<span class="name"><a href="/party/<%= person.donations[key].id %>"><%= person.donations[key].party_name %></a></span>
+				<span class="amount"><%= person.donations[key].amount %>€</span>
+			</li>
+		<% } %>
+	</ul>
+	
 </div>
