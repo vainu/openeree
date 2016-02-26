@@ -8,6 +8,7 @@ $white: #FFF;
 $lightGrey: #EDEFF3;
 $darkBlue: #1D2438;
 $lightBlue: #747D94;
+$purple: #8B1496;
 
 $header-color: $darkBlue;
 $header-font-family: 'Roboto';
@@ -90,9 +91,32 @@ body {
 		}
 	}
 }
+h3 {
+	margin: 40px 0;
+}
 .page-title {
 	margin: 40px 0;
 	color: $darkBlue;
+}
+.company-name {
+	margin: 40px 0 0;
+	font-weight: bold;
+}
+.employees {
+
+	margin: 0;
+	li {
+		display: inline-block;
+		margin-right: 20px;
+	}
+	a {
+		color: $purple;
+    	font-weight: bold;
+    	font-size: rem-calc(18);
+    	&:hover {
+
+    	}
+	}
 }
 .top-list {
 	list-style: none;

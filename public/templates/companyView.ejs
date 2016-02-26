@@ -4,34 +4,57 @@
 <div class="medium-9 large-10 columns content">
 	<div class="row">
 		<div class="small-12 columns">
-			<h2 class="page-title"><%= company.name %></h2>
+
+			<h1 class="company-name"><%= company.name %></h1>
+			<h4 class="subheader">Firma</h4>
 
 			<h3>Juhatus</h3>
-			<ul>
+			<ul class="employees">
 			<% for(var key in company.employees){%>
 				<li>
 					<span class="name"><a href="person/<%= company.employees[key].id %>"><%= company.employees[key].first_name %> <%= company.employees[key].last_name %></a></span>
 				</li>
 			<% } %>
 			</ul>
-			<h3>Võidetud hanked</h3>
-			<ul class="procsTo">
-				<% for(var key in company.procsTo){%>
-					<li>
-						<span class="name"><a href="procurements/<%= company.procsTo[key].id %>"><%= company.procsTo[key].description %></a></span>
-						<span class="amount"><%= company.procsTo[key].contract_price %>€</span>
-					</li>
-				<% } %>
-			</ul>
-			<h3>Korraldatud hanked</h3>
-			<ul class="procsBy">
+			<div class="row">
+				<div class="large-6 columns">
+					<h3>Võidetud hanked</h3>
+						<ul class="procsTo top-list">
+							<% for(var key in company.procsTo){%>
+								<li>
+									<div class="row">
+										<div class="small-9 columns">
+										<span class="name"><a href="procurements/<%= company.procsTo[key].id %>"><%= company.procsTo[key].description %></a></span>
+									</div>
+									
+									<div class="small-3 columns">
+										<span class="amount"><%= company.procsTo[key].contract_price %>€</span>
+									</div>
+									</div>
+								</li>
+							<% } %>
+						</ul>
+				</div>
+				<div class="large-6 columns">
+					<h3>Korraldatud hanked</h3>
+			<ul class="procsBy top-list">
 				<% for(var key in company.procsBy){%>
 					<li>
-						<span class="name"><a href="procurements/<%= company.procsBy[key].id %>"><%= company.procsBy[key].description %></a></span>
-						<span class="amount"><%= company.procsBy[key].contract_price %>€</span>
+						<div class="row">
+							<div class="small-9 columns">
+								<span class="name"><a href="procurements/<%= company.procsBy[key].id %>"><%= company.procsBy[key].description %></a></span>
+							</div>
+							<div class="small-3 columns">
+								<span class="amount"><%= company.procsBy[key].contract_price %>€</span>
+							</div>
+						</div>
+						
 					</li>
 				<% } %>
 			</ul>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </div>

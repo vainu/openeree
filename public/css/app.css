@@ -3916,9 +3916,26 @@ body {
         padding-left: 20px;
         font-weight: 500; }
 
+h3 {
+  margin: 40px 0; }
+
 .page-title {
   margin: 40px 0;
   color: #1D2438; }
+
+.company-name {
+  margin: 40px 0 0;
+  font-weight: bold; }
+
+.employees {
+  margin: 0; }
+  .employees li {
+    display: inline-block;
+    margin-right: 20px; }
+  .employees a {
+    color: #8B1496;
+    font-weight: bold;
+    font-size: 1.125rem; }
 
 .top-list {
   list-style: none;
