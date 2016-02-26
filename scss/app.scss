@@ -8,7 +8,7 @@ $white: #FFF;
 $lightGrey: #EDEFF3;
 $darkBlue: #1D2438;
 $lightBlue: #747D94;
-$purple: #8B1496;
+$purple: #DA1889;
 
 $header-color: $darkBlue;
 $header-font-family: 'Roboto';
@@ -91,6 +91,12 @@ body {
 		}
 	}
 }
+.callout {
+	borde-radius: 4px;
+	border: 0;
+	padding: 24px;
+	box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
+}
 h3 {
 	margin: 40px 0;
 }
@@ -98,12 +104,12 @@ h3 {
 	margin: 40px 0;
 	color: $darkBlue;
 }
-.company-name {
+.name {
 	margin: 40px 0 0;
 	font-weight: bold;
+	font-size: rem-calc(36);
 }
 .employees {
-
 	margin: 0;
 	li {
 		display: inline-block;
@@ -116,6 +122,30 @@ h3 {
     	&:hover {
 
     	}
+	}
+}
+.normal-list {
+	list-style: none;
+	margin: 0;
+	li {
+		padding: 24px 0;
+		margin: 0;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #D6D6D6;
+		a {
+			color: lighten($darkBlue, 10%);
+			font-weight: 500;
+			font-size: rem-calc(18);
+		}
+		.amount {
+			float: right;
+			font-weight: 400;
+			font-size: rem-calc(20);
+			color: $lightBlue;
+			.currency {
+				font-weight: bold;
+			}
+		}
 	}
 }
 .top-list {
@@ -185,5 +215,56 @@ h3 {
 	    	transform: scale(1.05);
 	    	transition: all 0.5s ease;
 	    }
+	}
+}
+.content.party-view {
+	.callout {
+		margin-top: 40px;
+	}
+	a.party-link {
+		margin-top: 54px;
+		text-align: right;
+		display: block;
+		color: $purple;
+		font-weight: bold;
+		font-size: rem-calc(18);
+	}
+	.party-image {
+		max-width: 60px;
+		display: inline;
+	}
+	.party-data {
+		.data {
+			font-size: rem-calc(24);
+			font-weight: bold;
+		}
+		.columns {
+			border-right: 1px solid lighten($lightBlue, 35%);
+			&:last-child {
+				border: none;
+			}
+		}
+	}
+}
+.procurement-view {
+	.callout {
+		margin-top: 40px;
+	}
+	.procurement-data {
+		.data {
+			font-size: rem-calc(24);
+			font-weight: bold;
+		}
+		.columns {
+			border-right: 1px solid lighten($lightBlue, 35%);
+			&:last-child {
+				border: none;
+			}
+		}
+	}
+	a.proc-link {
+		color: $purple;
+		font-weight: bold;
+		font-size: rem-calc(18);
 	}
 }

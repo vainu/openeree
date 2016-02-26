@@ -1,27 +1,48 @@
 <%= this.partial({url: 'templates/header.ejs'}) %>
 <%= this.partial({url: 'templates/sidebar.ejs'}) %>
-<div class="content">
-	<h2 class="text-center"><%= person.first_name %> <%= person.last_name %></h2>
-	<h3>Kuulub juhatusse</h3>
-	<ul>
-		<% for(var key in person.companies){%>
-			<li>
-				<span class="name"><a href="company/<%= person.companies[key].id %>"><%= person.companies[key].name %></a></span>
-			</li>
-		<% } %>
-	</ul>
-	<% if(person.member_id){%>
-	<h3>Kuulub erakonda</h3>
-	<p><a href="party/<%= person.party_id %>"><%= person.name %></a></p>
-	<% } %>
-	<h3>Annetused</h3>
-	<ul>
-		<% for(var key in person.donations){%>
-			<li>
-				<span class="name"><a href="/party/<%= person.donations[key].id %>"><%= person.donations[key].party_name %></a></span>
-				<span class="amount"><%= person.donations[key].amount %>€</span>
-			</li>
-		<% } %>
-	</ul>
-	
+<div class="medium-9 large-10 columns content">
+	<div class="row">
+		<div class="small-12 columns">
+
+			<h2 class="name"><%= person.first_name %> <%= person.last_name %></h2>
+			<h4 class="subheader">Isik</h4>
+			<div class="row">
+				<div class="small-6 columns">
+					<h3>Kuulub juhatusse</h3>
+					<ul class="normal-list">
+						<% for(var key in person.companies){%>
+							<li>
+								<span class="name"><a href="company/<%= person.companies[key].id %>"><%= person.companies[key].name %></a></span>
+							</li>
+						<% } %>
+					</ul>
+				</div>
+				<div class="small-6 columns">
+					<% if(person.member_id){%>
+					<h3>Kuulub erakonda</h3>
+					<ul class="top-list">
+						<li>
+							<span class="name">
+								<a href="party/<%= person.party_id %>"><%= person.name %></a>
+							</span>
+						</li>
+					</ul>
+					<% } %>
+					<h3>Annetused</h3>
+					<ul class="normal-list">
+						<% for(var key in person.donations){%>
+							<li>
+								<span class="name"><a href="/party/<%= person.donations[key].id %>"><%= person.donations[key].party_name %></a></span>
+								<span class="amount"><%= person.donations[key].amount %>
+									<span class="currency">€</span>
+								</span>
+							</li>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+	</div>
 </div>

@@ -1,25 +1,54 @@
 <%= this.partial({url: 'templates/header.ejs'}) %>
 <%= this.partial({url: 'templates/sidebar.ejs'}) %>
 
-<div class="content">
-	<h2 class="text-center"><%= party.name %></h2>
-	<h3>Koduleht</h3>
-	<p><a href="<%= party.metadata.website %>" target="_new"><%= party.metadata.website %></a></p>
-	<h3>Aadress</h3>
-	<p><%= party.metadata.street_address %></p>
-	<h3>Liikmete arv</h3>
-	<p><%= party.metadata.member_count %></p>
-	<h3>Riigitoetus</h3>
-	<p><%= party.metadata.gov_funding %>€</p>
-	<h3>Annetused erakonnale</h3>
-	<p><%= party.metadata.donation_sum %>€</p>
-	<h3>Top Annetajad</h3>
-	<ul>
-		<% for(var key in donators){%>
-			<li>
-				<span class="name"><a href="person/<%= donators[key].id %>"><%= donators[key].first_name %> <%= donators[key].last_name %></a></span>
-				<span class="amount"><%= donators[key].total_amount %>€</span>
-			</li>
-		<% } %>
-	</ul>
+<div class="medium-9 large-10 columns content party-view">
+	<div class="row">
+		<div class="small-12 columns">
+
+			<img class="party-image" src="<%= party.metadata.image %>" alt="">
+			<div class="row">
+				<div class="medium-8 columns">
+					<h2 class="name"><%= party.name %></h2>
+				</div>
+				<div class="medium-4 columns">
+					<a class="party-link" href="<%= party.metadata.website %>" target="_new"><%= party.metadata.website %></a>
+				</div>
+			</div>
+			<h4 class="subheader">Erakond</h4>
+
+			<div class="callout">
+				<div class="row party-data">
+					<div class="medium-5 columns">
+						<h5>Aadress</h5>
+						<p ><%= party.metadata.street_address %></p>
+					</div>
+					<div class="medium-2 text-center columns">
+						<p class="data"><%= party.metadata.member_count %></p>
+						<h5>Liikmete arv</h5>
+					</div>
+					<div class="medium-2 text-center columns">
+						<p class="data"><%= party.metadata.gov_funding %>€</p>
+						<h5>Riigitoetus</h5>
+					</div>
+					<div class="medium-3 text-center columns">
+						<p class="data"><%= party.metadata.donation_sum %>€</p>
+						<h5>Annetused erakonnale</h5>
+					</div>
+				</div>
+				
+			</div>
+				<h3>Top Annetajad</h3>
+				<ul class="top-list">
+					<% for(var key in donators){%>
+						<li>
+							<span class="name"><a href="person/<%= donators[key].id %>"><%= donators[key].first_name %> <%= donators[key].last_name %></a></span>
+							<span class="amount"><%= donators[key].total_amount %>
+								<span class="currency">€</span>
+							</span>
+						</li>
+					<% } %>
+				</ul>
+			
+		</div>
+	</div>
 </div>

@@ -1,16 +1,46 @@
 <%= this.partial({url: 'templates/header.ejs'}) %>
 <%= this.partial({url: 'templates/sidebar.ejs'}) %>
 
-<div class="content">
-	<h2 class="text-center"><%= procurement.description %></h2>
-	<h3>Hanke võitja</h3>
-	<p><a href="company/<%= procurement.provider %>"><%= procurement.provider_name %></a> <%= procurement.provider_reg_code %></p>
-	<h3>Riigihanke viide</h3>
-	<p><a href="<%= procurement.proc_link %>" target="_new"><%= procurement.proc_link %></a></p>
-	<h3>Hanke staatus</h3>
-	<p><%= procurement.status %></p>
-	<h3>Sõlmitud lepingu maksumus</h3>
-	<p><%= procurement.contract_price %>€</p>
-	<h3>Lepingu tegelik maksumus</h3>
-	<p><%= procurement.end_price %>€</p>
+<div class="medium-9 large-10 columns content procurement-view">
+	<div class="row">
+		<div class="small-12 columns">
+			<h2 class="name"><%= procurement.description %></h2>
+			<h4 class="subheader">Hange</h4>
+			<div class="callout">
+				<div class="row procurement-data text-center">
+					<div class="large-4 columns">
+						<p class="data"><%= procurement.status %></p>
+						<h5>Hanke staatus</h5>
+					</div>
+					<div class="large-4 columns">
+						<p class="data"><%= procurement.contract_price %>€</p>
+						<h5>Sõlmitud lepingu maksumus</h5>
+					</div>
+					<div class="large-4 columns">
+						<p class="data"><%= procurement.end_price %>€</p>
+						<h5>Lepingu tegelik maksumus</h5>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="medium-6 columns">
+					<h3>Hanke võitja</h3>
+					<ul class="top-list">
+						<li>
+							<span class="name">
+								<a href="company/<%= procurement.provider %>"><%= procurement.provider_name %>  <%= procurement.provider_reg_code %></a>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<div class="medium-6 columns">
+					<h3>Riigihanke viide</h3>
+					<a class="proc-link" href="<%= procurement.proc_link %>" target="_new"><%= procurement.proc_link %></a>
+				</div>
+			</div>
+			
+			
+			
+		</div>
+	</div>
 </div>

@@ -3916,6 +3916,12 @@ body {
         padding-left: 20px;
         font-weight: 500; }
 
+.callout {
+  borde-radius: 4px;
+  border: 0;
+  padding: 24px;
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1); }
+
 h3 {
   margin: 40px 0; }
 
@@ -3923,9 +3929,10 @@ h3 {
   margin: 40px 0;
   color: #1D2438; }
 
-.company-name {
+.name {
   margin: 40px 0 0;
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 2.25rem; }
 
 .employees {
   margin: 0; }
@@ -3933,9 +3940,29 @@ h3 {
     display: inline-block;
     margin-right: 20px; }
   .employees a {
-    color: #8B1496;
+    color: #DA1889;
     font-weight: bold;
     font-size: 1.125rem; }
+
+.normal-list {
+  list-style: none;
+  margin: 0; }
+  .normal-list li {
+    padding: 24px 0;
+    margin: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #D6D6D6; }
+    .normal-list li a {
+      color: #2e3a5a;
+      font-weight: 500;
+      font-size: 1.125rem; }
+    .normal-list li .amount {
+      float: right;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: #747D94; }
+      .normal-list li .amount .currency {
+        font-weight: bold; }
 
 .top-list {
   list-style: none;
@@ -3997,3 +4024,44 @@ h3 {
     .content.party-list .party:hover .side-color {
       width: 20px;
       transition: all 0.3s linear; }
+
+.content.party-view .callout {
+  margin-top: 40px; }
+
+.content.party-view a.party-link {
+  margin-top: 54px;
+  text-align: right;
+  display: block;
+  color: #DA1889;
+  font-weight: bold;
+  font-size: 1.125rem; }
+
+.content.party-view .party-image {
+  max-width: 60px;
+  display: inline; }
+
+.content.party-view .party-data .data {
+  font-size: 1.5rem;
+  font-weight: bold; }
+
+.content.party-view .party-data .columns {
+  border-right: 1px solid #d9dbe2; }
+  .content.party-view .party-data .columns:last-child {
+    border: none; }
+
+.procurement-view .callout {
+  margin-top: 40px; }
+
+.procurement-view .procurement-data .data {
+  font-size: 1.5rem;
+  font-weight: bold; }
+
+.procurement-view .procurement-data .columns {
+  border-right: 1px solid #d9dbe2; }
+  .procurement-view .procurement-data .columns:last-child {
+    border: none; }
+
+.procurement-view a.proc-link {
+  color: #DA1889;
+  font-weight: bold;
+  font-size: 1.125rem; }
