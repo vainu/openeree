@@ -3888,6 +3888,15 @@ body {
   background-color: #EDEFF3;
   font-family: 'Roboto', sans-serif; }
 
+.button {
+  background-color: #DA1889; }
+  .button:hover {
+    background-color: #7e0e4f; }
+
+.button-group {
+  border-radius: 4px;
+  overflow: hidden; }
+
 .sidebar {
   height: 100%;
   background-color: #1D2438;
@@ -3989,6 +3998,16 @@ h3 {
           -ms-transform: scale(1.02);
               transform: scale(1.02);
       transition: all 0.5s ease; }
+
+.content.landing h1 {
+  margin-top: 120px;
+  font-size: 2.125rem; }
+
+.content.landing h5 {
+  margin-top: 60px; }
+
+.content.landing .button-shortcut {
+  margin-top: 40px; }
 
 .content.party-list .party {
   background-color: #FFF;

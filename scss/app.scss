@@ -60,6 +60,16 @@ body {
 	background-color: $lightGrey;
 	font-family: 'Roboto', sans-serif;
 }
+.button {
+	background-color: $purple;
+	&:hover {
+		background-color: darken($purple, 20%);
+	}
+}
+.button-group {
+	border-radius: 4px;
+	overflow: hidden;
+}
 .sidebar {
 	height: 100%;
 	background-color: $darkBlue;
@@ -175,6 +185,18 @@ h3 {
 	    	transform: scale(1.02);
 	    	transition: all 0.5s ease;
 	    }
+	}
+}
+.content.landing {
+	h1 {
+		margin-top: 120px;
+		font-size: rem-calc(34);
+	}
+	h5 {
+		margin-top: 60px;
+	}
+	.button-shortcut {
+		margin-top: 40px;
 	}
 }
 .content.party-list {
