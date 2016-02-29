@@ -30,7 +30,7 @@
 									</div>
 									
 									<div class="small-3 columns">
-										<span class="amount"><%= company.procsTo[key].contract_price %>€</span>
+										<span class="amount"><%= parseInt(company.procsTo[key].contract_price) %>€</span>
 									</div>
 									</div>
 								</li>
@@ -47,7 +47,7 @@
 								<span class="name"><a href="procurements/<%= company.procsBy[key].id %>"><%= company.procsBy[key].description %></a></span>
 							</div>
 							<div class="small-3 columns">
-								<span class="amount"><%= company.procsBy[key].contract_price %>€</span>
+								<span class="amount"><%= parseInt(company.procsBy[key].contract_price) %>€</span>
 							</div>
 						</div>
 						

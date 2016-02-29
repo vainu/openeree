@@ -95,6 +95,11 @@ var API = new(function() {
       get('/party/' + id, function(data){
         cb(data);
       })
+    },
+    getMembers : function(id, cb){
+      get('/party/' + id + '/members', function(data){
+        cb(data);
+      });
     }
   }
 

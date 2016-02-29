@@ -4084,3 +4084,13 @@ h3 {
   color: #DA1889;
   font-weight: bold;
   font-size: 1.125rem; }
+
+.search input {
+  width: 70%;
+  display: block;
+  float: left; }
+
+.search .init-search {
+  width: 30%;
+  display: block;
+  float: left; }

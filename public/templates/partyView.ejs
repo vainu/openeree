@@ -18,7 +18,7 @@
 
 			<div class="callout">
 				<div class="row party-data">
-					<div class="medium-5 columns">
+					<div class="medium-4 columns">
 						<h5>Aadress</h5>
 						<p ><%= party.metadata.street_address %></p>
 					</div>
@@ -30,9 +30,13 @@
 						<p class="data"><%= party.metadata.gov_funding %>€</p>
 						<h5>Riigitoetus</h5>
 					</div>
-					<div class="medium-3 text-center columns">
+					<div class="medium-2 text-center columns">
 						<p class="data"><%= party.metadata.donation_sum %>€</p>
 						<h5>Annetused erakonnale</h5>
+					</div>
+					<div class="medium-2 text-center columns">
+						<p class="data"><%= party.metadata.member_fee %>€</p>
+						<h5>Liikmemaks</h5>
 					</div>
 				</div>
 				
@@ -48,7 +52,14 @@
 						</li>
 					<% } %>
 				</ul>
-			
+				<h3>Erakonna liikmed</h3>
+				<ul class="top-list">
+					<% for(var key in members){%>
+						<li>
+							<span class="name"><a href="person/<%= donators[key].id %>"><%= members[key].first_name %> <%= members[key].last_name %></a></span>
+						</li>
+					<% } %>
+				</ul>
 		</div>
 	</div>
 </div>

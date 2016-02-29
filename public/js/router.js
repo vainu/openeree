@@ -46,15 +46,30 @@ Router.use('/parties', function(req){
   API.party.getAll(function(data){
     Renderer.render('partyList', req, {parties : data});
   });
-})
+});
 
 Router.use('/party/:id', function(req){
-  API.party.getById(req.params.id, function(data){
-    API.donators.byParty(req.params.id, function(donators){
-      Renderer.render('partyView', req, {party : data, donators : donators});
-    });
+
+  async.parallel({
+    party : function(cb){
+      API.party.getById(req.params.id, function(data){
+        cb(null, data);
+      });
+    },
+    donators : function(cb){
+      API.donators.byParty(req.params.id, function(data){
+        cb(null, data);
+      });
+    },
+    members : function(cb){
+      API.party.getMembers(req.params.id, function(data){
+        cb(null, data);
+      });
+    }
+  }, function(err, result){
+    Renderer.render('partyView', req, {party : result.party, donators : result.donators, members : result.members});
   })
-})
+});
 
 Router.use('/donators/top', function(req){
   API.donators.getTop(function(data){
@@ -73,7 +88,8 @@ Router.use('/search/:search', function (req) {
       'persons': persons[0],
       'companies': companies[0]
     });
-    Renderer.render('landing', req, {});
+    Renderer.render('search', req, {parties : parties[0], persons : persons[0], companies : companies[0]});
+    $('input[name="search"]').attr('placeholder',req.params.search);
   })
 });
 

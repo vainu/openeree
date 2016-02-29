@@ -1,0 +1,33 @@
+<%= this.partial({url: 'templates/header.ejs'}) %>
+<%= this.partial({url: 'templates/sidebar.ejs'}) %>
+
+<div class="medium-9 large-10 columns content party-view">
+	<div class="row">
+		<div class="small-12 columns">
+				<h3>Erakonnad (<%= parties.length %>)</h3>
+				<ul class="top-list">
+					<% for(var key in parties){%>
+						<li>
+							<span class="name"><a href="party/<%= parties[key].id %>"><%= parties[key].name %></a></span>
+						</li>
+					<% } %>
+				</ul>
+				<h3>Isikud (<%= persons.length %>)</h3>
+				<ul class="top-list">
+					<% for(var key in persons){%>
+						<li>
+							<span class="name"><a href="person/<%= persons[key].id %>"><%= persons[key].first_name %> <%= persons[key].last_name %></a></span>
+						</li>
+					<% } %>
+				</ul>
+				<h3>Ettevõtted (<%= companies.length %>)</h3>
+				<ul class="top-list">
+					<% for(var key in companies){%>
+						<li>
+							<span class="name"><a href="company/<%= companies[key].id %>"><%= companies[key].name %></a></span>
+						</li>
+					<% } %>
+				</ul>
+		</div>
+	</div>
+</div>

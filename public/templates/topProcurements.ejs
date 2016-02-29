@@ -4,7 +4,7 @@
 	<h2 class="text-center">Hangete võitjad</h2>
 	<ul class="top-list">
 		<% for(var key in procurements){%>
-			<li><span class="name"><a href="company/<%= procurements[key].company_id %>"><%= procurements[key].provider_name %></a></span><span class="amount"><%= procurements[key].total_amount %>€</span></li>
+			<li><span class="name"><a href="company/<%= procurements[key].company_id %>"><%= procurements[key].provider_name %></a></span><span class="amount"><%= parseInt(procurements[key].total_amount) %>€</span></li>
 		<% } %>
 	</ul>
 </div>
