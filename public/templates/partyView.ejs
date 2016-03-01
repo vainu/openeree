@@ -27,39 +27,56 @@
 						<h5>Liikmete arv</h5>
 					</div>
 					<div class="medium-2 text-center columns">
-						<p class="data"><%= party.metadata.gov_funding %>€</p>
+						<p class="data"><span class="amount"><%= party.metadata.gov_funding %>€</span></p>
 						<h5>Riigitoetus</h5>
 					</div>
 					<div class="medium-2 text-center columns">
-						<p class="data"><%= party.metadata.donation_sum %>€</p>
-						<h5>Annetused erakonnale</h5>
+						<p class="data"><span class="amount"><%= party.metadata.donation_sum %>€</span></p>
+						<h5>2015 Annetused</h5>
 					</div>
 					<div class="medium-2 text-center columns">
-						<p class="data"><%= party.metadata.member_fee %>€</p>
+						<p class="data"><span class="amount"><%= party.metadata.member_fee %>€</span></p>
 						<h5>Liikmemaks</h5>
 					</div>
 				</div>
 				
 			</div>
-				<h3>Top Annetajad</h3>
-				<ul class="top-list">
-					<% for(var key in donators){%>
-						<li>
-							<span class="name"><a href="person/<%= donators[key].id %>"><%= donators[key].first_name %> <%= donators[key].last_name %></a></span>
-							<span class="amount"><%= donators[key].total_amount %>
-								<span class="currency">€</span>
-							</span>
-						</li>
-					<% } %>
-				</ul>
-				<h3>Erakonna liikmed</h3>
-				<ul class="top-list">
-					<% for(var key in members){%>
-						<li>
-							<span class="name"><a href="person/<%= donators[key].id %>"><%= members[key].first_name %> <%= members[key].last_name %></a></span>
-						</li>
-					<% } %>
-				</ul>
+				<div class="tab-wrap">
+					<div class="tab-nav active" data-id="donators">
+						<h3>Top Annetajad <span class="metainfo">(2013/2014/2015)</span></h3>
+					</div>
+					<div class="tab-nav" data-id="members">
+						<h3>Erakonna liikmed</h3>
+					</div>
+					
+					<div class="tab-content active" data-id="donators">
+						<ul class="top-list">
+							<% for(var key in donators){%>
+								<% var listClass = 'list-color';
+									var dataColor = 0;
+									if(donators[key].party.length){
+										dataColor = donators[key].party[0].id;
+									}
+								%>
+								<li class="<%= listClass %>" <% if(dataColor){%>data-color="<%= dataColor %>"<% } %>>
+									<span class="name"><a href="person/<%= donators[key].id %>"><%= donators[key].first_name %> <%= donators[key].last_name %></a></span>
+									<span class="amount"><%= donators[key].total_amount %>
+										<span class="currency">€</span>
+									</span>
+								</li>
+							<% } %>
+						</ul>
+					</div>
+					<div class="tab-content" data-id="members">
+						<ul class="top-list">
+							<% for(var key in members){%>
+								<li>
+									<span class="name"><a href="person/<%= members[key].id %>"><%= members[key].first_name %> <%= members[key].last_name %></a></span>
+								</li>
+							<% } %>
+						</ul>
+					</div>
+				</div>	
 		</div>
 	</div>
 </div>

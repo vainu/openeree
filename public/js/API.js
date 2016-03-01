@@ -3,11 +3,13 @@ var API = new(function() {
   var CACHE = {};
   var CACHE_UPDATE = null;
   var CACHE_MAP = [
+    'party'
   ];
 
   var HOST = 'http://opener.ee/api/v1/';
 
   function get(path, cb, nocache) {
+    App.loader.show();
     if (CACHE.hasOwnProperty(path) && !nocache) {
       cb(CACHE[path]);
     } else {
@@ -80,12 +82,27 @@ var API = new(function() {
   var person = {
     getById : function(id, cb){
       get('person/'+id+'/full', function(data){
+        data.donations.sort(sort_by('year',true,parseInt));
         cb(data);
       })
     }
   }
 
   var party = {
+    getColors : function(cb){
+      var output = {};
+      get('/party', function(data){
+        async.each(data, function(party, callback){
+          output[party.id] = {
+            color : party.metadata.color,
+            name : party.name
+          };
+          callback();
+        }, function(){
+          cb(output);
+        })
+      });
+    },
     getAll : function(cb){
       get('/party', function(data){
         cb(data);
@@ -96,8 +113,11 @@ var API = new(function() {
         cb(data);
       })
     },
-    getMembers : function(id, cb){
-      get('/party/' + id + '/members', function(data){
+    getMembers : function(id, cb, limit){
+      if(typeof limit === 'undefined'){
+        limit = 100;
+      }
+      get('/party/' + id + '/members?limit='+limit, function(data){
         cb(data);
       });
     }
@@ -109,8 +129,11 @@ var API = new(function() {
         cb(data);
       });
     },
-    byParty : function(id, cb){
-      get('party/'+id+'/donations/sum?order=-total_amount', function(data){
+    byParty : function(id, cb, limit){
+      if(typeof limit === 'undefined'){
+        limit = 100;
+      }
+      get('party/'+id+'/donations/sum?order=-total_amount&limit=' + limit, function(data){
         cb(data);
       })
     }

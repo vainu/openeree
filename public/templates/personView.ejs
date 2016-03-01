@@ -32,7 +32,7 @@
 					<ul class="normal-list">
 						<% for(var key in person.donations){%>
 							<li>
-								<span class="name"><a href="/party/<%= person.donations[key].id %>"><%= person.donations[key].party_name %></a></span>
+								<span class="name"><a href="/party/<%= person.donations[key].id %>"><%= person.donations[key].party_name %><span class="metainfo"><%= person.donations[key].year %></span></a></span>
 								<span class="amount"><%= person.donations[key].amount %>
 									<span class="currency">€</span>
 								</span>

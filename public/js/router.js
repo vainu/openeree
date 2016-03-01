@@ -59,12 +59,12 @@ Router.use('/party/:id', function(req){
     donators : function(cb){
       API.donators.byParty(req.params.id, function(data){
         cb(null, data);
-      });
+      },10000);
     },
     members : function(cb){
       API.party.getMembers(req.params.id, function(data){
         cb(null, data);
-      });
+      },20000);
     }
   }, function(err, result){
     Renderer.render('partyView', req, {party : result.party, donators : result.donators, members : result.members});

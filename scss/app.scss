@@ -16,6 +16,7 @@ $header-font-weight: 300;
 
 @import 'foundation';
 @import 'motion-ui';
+@import 'tabs';
 
 @include foundation-global-styles;
 @include foundation-grid;
@@ -69,6 +70,13 @@ body {
 .button-group {
 	border-radius: 4px;
 	overflow: hidden;
+}
+span{
+	.metainfo{
+		color: #A2A0A0;
+	    font-size: 80%;
+	    padding: 10px;
+	}
 }
 .sidebar {
 	height: 100%;
@@ -162,6 +170,9 @@ h3 {
 	list-style: none;
 	margin: 0;
 	li {
+		&.list-color{
+			border-left:solid 4px #fff;
+		}
 		background-color: $white;
 		padding: 24px;
 		margin-bottom: 20px;
@@ -300,5 +311,64 @@ h3 {
 		width: 30%;
 		display: block;
 		float: left;
+	}
+}
+.loader{
+	display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    z-index: 9;
+    left: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
+    &.show{
+    	display: block;
+    }
+    .bar_loader{
+		width: 60px;
+		height: 60px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -30px;
+		margin-left: -30px;
+		.bar{
+			box-sizing:border-box;
+			width: 23.333%;
+			position: absolute;
+			bottom:45%;
+			height: 10%;
+			background:linear-gradient(to bottom, #5C2479 0%, #87278A 100%);
+			animation:BAR_ANIMATION 2s normal infinite ease-in-out;
+			&.a{
+				left: 0%;
+			}
+			&.b{
+				left: 33.333%;
+				animation-delay:0.2s;
+			}
+			&.c{
+				left: 66.666%;
+				animation-delay:0.4s;
+			}
+		}
+	}
+		
+}
+
+
+@keyframes BAR_ANIMATION{
+	0%{
+		height: 10%;
+		bottom:45%;
+	}
+	50%{
+		height: 100%;
+		bottom:0%;
+	}
+	100%{
+		height: 10%;
+		bottom:45%;
 	}
 }

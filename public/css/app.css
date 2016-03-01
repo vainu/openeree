@@ -9,6 +9,24 @@
   transition-duration: 500ms;
   transition-timing-function: linear; }
 
+.tab-wrap .tab-nav {
+  border-bottom: solid 4px transparent;
+  cursor: pointer;
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 20px; }
+  .tab-wrap .tab-nav h3 {
+    margin-bottom: 20px; }
+  .tab-wrap .tab-nav.active {
+    border-bottom: solid 4px #fff; }
+
+.tab-wrap .tab-content {
+  display: none;
+  width: 100%;
+  float: left; }
+  .tab-wrap .tab-content.active {
+    display: block; }
+
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
    * 1. Set default font family to sans-serif.
@@ -3897,6 +3915,11 @@ body {
   border-radius: 4px;
   overflow: hidden; }
 
+span .metainfo {
+  color: #A2A0A0;
+  font-size: 80%;
+  padding: 10px; }
+
 .sidebar {
   height: 100%;
   background-color: #1D2438;
@@ -3982,6 +4005,8 @@ h3 {
     margin-bottom: 20px;
     box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.1);
     transition: all 0.5s ease; }
+    .top-list li.list-color {
+      border-left: solid 4px #fff; }
     .top-list li .amount {
       float: right;
       font-weight: 400;
@@ -4094,3 +4119,64 @@ h3 {
   width: 30%;
   display: block;
   float: left; }
+
+.loader {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  z-index: 9;
+  left: 0px;
+  background-color: rgba(255, 255, 255, 0.5); }
+  .loader.show {
+    display: block; }
+  .loader .bar_loader {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    margin-left: -30px; }
+    .loader .bar_loader .bar {
+      box-sizing: border-box;
+      width: 23.333%;
+      position: absolute;
+      bottom: 45%;
+      height: 10%;
+      background: linear-gradient(to bottom, #5C2479 0%, #87278A 100%);
+      -webkit-animation: BAR_ANIMATION 2s normal infinite ease-in-out;
+              animation: BAR_ANIMATION 2s normal infinite ease-in-out; }
+      .loader .bar_loader .bar.a {
+        left: 0%; }
+      .loader .bar_loader .bar.b {
+        left: 33.333%;
+        -webkit-animation-delay: 0.2s;
+                animation-delay: 0.2s; }
+      .loader .bar_loader .bar.c {
+        left: 66.666%;
+        -webkit-animation-delay: 0.4s;
+                animation-delay: 0.4s; }
+
+@-webkit-keyframes BAR_ANIMATION {
+  0% {
+    height: 10%;
+    bottom: 45%; }
+  50% {
+    height: 100%;
+    bottom: 0%; }
+  100% {
+    height: 10%;
+    bottom: 45%; } }
+
+@keyframes BAR_ANIMATION {
+  0% {
+    height: 10%;
+    bottom: 45%; }
+  50% {
+    height: 100%;
+    bottom: 0%; }
+  100% {
+    height: 10%;
+    bottom: 45%; } }
