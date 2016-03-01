@@ -11,8 +11,9 @@ module.exports = function () {
         .select()
         .join('person', 'company_employee.employee_id', 'person.id')
         .join('company_role', 'company_employee.role_id', 'company_role.id')
+        .leftJoin('party_member', 'person.id', 'party_member.member_id')
+        .leftJoin('party', 'party_member.party_id', 'party.id')
         .from('company_employee');
-
 
     app.get('/', function (req, res) {
         let q = db.select().from('company');
