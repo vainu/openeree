@@ -5,6 +5,8 @@ var App = new(function(){
 		setListColors();
 		setTabs();
 		App.loader.hide();
+		setTopProcurersLoadMore();
+		setTopProcurementsLoadMore();
 	}
 
 	function setListColors(){
@@ -15,8 +17,6 @@ var App = new(function(){
 						'border-left' : 'solid 4px ' + colors[$(this).attr('data-color')].color
 					});
 				}
-					
-				
 			});
 		});
 	}
@@ -58,6 +58,72 @@ var App = new(function(){
 	function doSearch(keyword){
 		if(keyword.length){
 			window.location.hash = '#/search/' + keyword;
+		}
+	}
+
+	function setTopProcurersLoadMore(){
+		var offset = 100;
+		var limit = 100;
+
+		var loadMoreBttn = $('.load-more.topProcurers');
+		if(loadMoreBttn.length){
+			$(this).unbind('click').click(function(){
+				API.get('aggregated/mostprocsby?order=-total_amount&offset=' + offset + '&limit' + 100, function(data){
+					for(var key in data){
+						var template = '<li>'+
+											'<span class="name">'+
+												'<a href="#company/' + data[key].company_id +'">'+data[key].acquirer_name+'</a>'+
+											'</span>'+
+											'<span class="amount">'+ parseInt(data[key].total_amount).formatMoney(0, ' ', ' ') +	'<span class="currency">€</span>'+
+											'</span>'+
+										'</li>';
+
+						$('.top-list#topProcurers').append(template);
+					}
+					if(data.length === limit){
+						loadMoreBttn.insertAfter($('.top-list#topProcurers:last-child'));
+					} else {
+						loadMoreBttn.remove();
+					}
+					
+					offset += limit;
+					App.loader.hide();
+				});
+				
+			});
+		}
+	}
+
+	function setTopProcurementsLoadMore(){
+		var offset = 100;
+		var limit = 100;
+
+		var loadMoreBttn = $('.load-more.topProcurements');
+		if(loadMoreBttn.length){
+			$(this).unbind('click').click(function(){
+				API.get('aggregated/mostprocsto?order=-total_amount&offset=' + offset + '&limit' + 100, function(data){
+					for(var key in data){
+						var template = '<li>'+
+											'<span class="name">'+
+												'<a href="#company/' + data[key].company_id +'">'+data[key].provider_name+'</a>'+
+											'</span>'+
+											'<span class="amount">'+ parseInt(data[key].total_amount).formatMoney(0, ' ', ' ') +	'<span class="currency">€</span>'+
+											'</span>'+
+										'</li>';
+
+						$('.top-list#topProcWinners').append(template);
+					}
+					if(data.length === limit){
+						loadMoreBttn.insertAfter($('.top-list#topProcWinners:last-child'))
+					} else {
+						loadMoreBttn.remove();
+					}
+					
+					offset += limit;
+					App.loader.hide();
+				});
+
+			});
 		}
 	}
 

@@ -13,7 +13,7 @@
 				<ul class="employees">
 				<% for(var key in company.employees){%>
 					<li>
-						<span class="name"><a href="person/<%= company.employees[key].id %>"><%= company.employees[key].first_name %> <%= company.employees[key].last_name %></a></span>
+						<span class="name"><a href="person/<%= company.employees[key].employee_id %>"><%= company.employees[key].first_name %> <%= company.employees[key].last_name %></a></span>
 					</li>
 				<% } %>
 				</ul>

@@ -6,10 +6,11 @@
 		<div class="small-12 columns">
 			<h2 class="page-title">Hankijad</h2>
 
-			<ul class="top-list">
+			<ul class="top-list" id="topProcurers">
 				<% for(var key in procurements){%>
 					<li><span class="name"><a href="company/<%= procurements[key].company_id %>"><%= procurements[key].acquirer_name %></a></span><span class="amount"><%= parseInt(procurements[key].total_amount) %> <span class="currency">€</span></span></li>
 				<% } %>
+				<div class="load-more topProcurers">Näita Rohkem</div>
 			</ul>
 
 		</div>

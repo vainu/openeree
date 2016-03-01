@@ -4159,6 +4159,14 @@ h3 {
         -webkit-animation-delay: 0.4s;
                 animation-delay: 0.4s; }
 
+.load-more {
+  text-align: center;
+  margin: 20px 0px;
+  background-color: #DA1889;
+  color: #fff;
+  padding: 20px;
+  cursor: pointer; }
+
 @-webkit-keyframes BAR_ANIMATION {
   0% {
     height: 10%;
