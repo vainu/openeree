@@ -24,7 +24,7 @@ var API = new(function() {
   function getSearch(search, cb) {
     $.when(
         $.get(HOST + 'party?search=name:'+ search),
-        $.get(HOST + 'person?full_name:'+ search),
+        $.get(HOST + 'person?full_name='+ search),
         $.get(HOST + 'company?search=name:'+ search)
     ).then(function (parties, persons, companies) {
         cb(null, parties, persons, companies);
