@@ -13,6 +13,11 @@ module.exports = function () {
         .join('company', 'company_employee.company_id', 'company.id')
         .from('company_employee');
 
+    let partyQ = db
+        .select()
+        .join('party', 'party_member.party_id', 'party.id')
+        .from('party_member');
+
     app.get('/', function (req, res) {
         let q = db
             .select()
@@ -88,6 +93,11 @@ module.exports = function () {
             q: companiesQ,
             field: 'companies',
             where: 'employee_id'
+        }, {
+            q: partyQ,
+            field: 'party',
+            where: 'member_id',
+            whereId: 'member_id'
         }]);
     });
 
