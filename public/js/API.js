@@ -2,21 +2,22 @@ var API = new(function() {
   var DEBUG = true;
   var CACHE = {};
   var CACHE_UPDATE = null;
-  var CACHE_MAP = [
-    'party'
-  ];
+  var CACHE_MAP = [];
 
   var HOST = 'http://opener.ee/api/v1/';
 
   function get(path, cb, nocache) {
-    App.loader.show();
+    
+      App.loader.show();
+    
+    
     if (CACHE.hasOwnProperty(path) && !nocache) {
       cb(CACHE[path]);
       App.loader.hide();
     } else {
       $.get(HOST + path, function(data) {
         cb(data);
-        App.loader.hide();
+        
       });
     }
   }

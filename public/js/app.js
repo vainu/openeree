@@ -4,7 +4,7 @@ var App = new(function(){
 		setSearch();
 		setListColors();
 		setTabs();
-		
+		App.loader.hide();
 	}
 
 	function setListColors(){
