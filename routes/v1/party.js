@@ -97,7 +97,7 @@ module.exports = function () {
             q: partyQ,
             field: 'party',
             where: 'member_id',
-            whereId: 'party_id'
+            whereId: 'member_id'
         }]);
     });
 
