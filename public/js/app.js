@@ -7,7 +7,7 @@ var App = new(function(){
 	function formatNumbers(){
 		$('span.amount').each(function(){
 			var val = parseInt($(this).html());
-			$(this).html(val.formatMoney(3,' ',' ') + '€');
+			$(this).html(val.formatMoney(0,' ',' ') + '€');
 		});
 	}
 
