@@ -23,17 +23,19 @@
 					<h3>Võidetud hanked</h3>
 						<ul class="procsTo top-list">
 							<% for(var key in company.procsTo){%>
-								<li>
-									<div class="row">
-										<div class="small-8 columns">
-										<span class="name"><a href="procurements/<%= company.procsTo[key].id %>"><%= company.procsTo[key].description %></a></span>
-									</div>
-									
-									<div class="small-4 columns">
-										<span class="amount"><%= parseInt(company.procsTo[key].contract_price) %>€</span>
-									</div>
-									</div>
-								</li>
+								<a href="procurements/<%= company.procsTo[key].id %>">
+									<li>
+										<div class="row">
+											<div class="small-8 columns">
+											<span class="name"><%= company.procsTo[key].description %></span>
+										</div>
+										
+										<div class="small-4 columns">
+											<span class="amount"><%= parseInt(company.procsTo[key].contract_price) %>€</span>
+										</div>
+										</div>
+									</li>
+								</a>
 							<% } %>
 						</ul>
 				</div>
@@ -41,17 +43,18 @@
 					<h3>Korraldatud hanked</h3>
 			<ul class="procsBy top-list">
 				<% for(var key in company.procsBy){%>
-					<li>
-						<div class="row">
-							<div class="small-8 columns">
-								<span class="name"><a href="procurements/<%= company.procsBy[key].id %>"><%= company.procsBy[key].description %></a></span>
-							</div>
-							<div class="small-4 columns">
-								<span class="amount"><%= parseInt(company.procsBy[key].contract_price) %>€</span>
-							</div>
-						</div>
-						
-					</li>
+					<a href="procurements/<%= company.procsBy[key].id %>">
+						<li>
+							<div class="row">
+								<div class="small-8 columns">
+									<span class="name"><%= company.procsBy[key].description %></span>
+								</div>
+								<div class="small-4 columns">
+									<span class="amount"><%= parseInt(company.procsBy[key].contract_price) %>€</span>
+								</div>
+							</div>			
+						</li>
+					</a>
 				<% } %>
 			</ul>
 				</div>

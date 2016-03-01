@@ -3938,7 +3938,7 @@ span .metainfo {
     margin: 40px auto 20px;
     display: block; }
   .sidebar ul {
-    margin: 80px 0 0; }
+    margin: 40px 0 0; }
     .sidebar ul li {
       list-style: none;
       padding: 20px 0;
@@ -3947,6 +3947,17 @@ span .metainfo {
         color: #FFF;
         padding-left: 20px;
         font-weight: 500; }
+  .sidebar .search {
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 40px;
+    display: block; }
+    .sidebar .search input {
+      height: 34px;
+      margin-bottom: 0;
+      font-size: 0.875rem; }
+    .sidebar .search .button {
+      margin-bottom: 0; }
 
 .callout {
   borde-radius: 4px;
@@ -4014,7 +4025,7 @@ h3 {
       color: #747D94; }
       .top-list li .amount .currency {
         font-weight: bold; }
-    .top-list li .name a {
+    .top-list li .name {
       color: #2e3a5a;
       font-weight: 500;
       font-size: 1.125rem; }
@@ -4033,6 +4044,9 @@ h3 {
 
 .content.landing .button-shortcut {
   margin-top: 40px; }
+
+.content.landing .resource-text {
+  font-size: 0.75rem; }
 
 .content.party-list .party {
   background-color: #FFF;

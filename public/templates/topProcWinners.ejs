@@ -8,10 +8,12 @@
 
 			<ul class="top-list" id="topProcWinners">
 				<% for(var key in procurements){%>
-					<li><span class="name">
-						<a href="company/<%= procurements[key].company_id %>"><%= procurements[key].provider_name %></a></span>
-						<span class="amount"><%= parseInt(procurements[key].total_amount) %> <span class="currency">€</span></span>
-					</li>
+					<a href="company/<%= procurements[key].company_id %>">
+						<li><span class="name">
+							<%= procurements[key].provider_name %></span>
+							<span class="amount"><%= parseInt(procurements[key].total_amount) %> <span class="currency">€</span></span>
+						</li>
+					</a>
 				<% } %>
 				<div class="load-more topProcurements">Näita Rohkem</div>
 			</ul>

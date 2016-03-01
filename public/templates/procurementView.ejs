@@ -26,11 +26,13 @@
 				<div class="medium-6 columns">
 					<h3>Hanke võitja</h3>
 					<ul class="top-list">
-						<li>
-							<span class="name">
-								<a href="company/<%= procurement.provider %>"><%= procurement.provider_name %>  <%= procurement.provider_reg_code %></a>
-							</span>
-						</li>
+						<a href="company/<%= procurement.provider %>">
+							<li>
+								<span class="name">
+									<%= procurement.provider_name %>  <%= procurement.provider_reg_code %>
+								</span>
+							</li>
+						</a>
 					</ul>
 				</div>
 				<div class="medium-6 columns">

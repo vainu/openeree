@@ -52,27 +52,31 @@
 					<div class="tab-content active" data-id="donators">
 						<ul class="top-list">
 							<% for(var key in donators){%>
-								<% var listClass = 'list-color';
-									var dataColor = 0;
-									if(donators[key].party.length){
-										dataColor = donators[key].party[0].id;
-									}
-								%>
-								<li class="<%= listClass %>" <% if(dataColor){%>data-color="<%= dataColor %>"<% } %>>
-									<span class="name"><a href="person/<%= donators[key].id %>"><%= donators[key].first_name %> <%= donators[key].last_name %></a></span>
-									<span class="amount"><%= donators[key].total_amount %>
-										<span class="currency">€</span>
-									</span>
-								</li>
+								<a href="person/<%= donators[key].id %>">
+									<% var listClass = 'list-color';
+										var dataColor = 0;
+										if(donators[key].party.length){
+											dataColor = donators[key].party[0].id;
+										}
+									%>
+									<li class="<%= listClass %>" <% if(dataColor){%>data-color="<%= dataColor %>"<% } %>>
+										<span class="name"><%= donators[key].first_name %> <%= donators[key].last_name %></span>
+										<span class="amount"><%= donators[key].total_amount %>
+											<span class="currency">€</span>
+										</span>
+									</li>
+								</a>
 							<% } %>
 						</ul>
 					</div>
 					<div class="tab-content" data-id="members">
 						<ul class="top-list">
 							<% for(var key in members){%>
-								<li>
-									<span class="name"><a href="person/<%= members[key].id %>"><%= members[key].first_name %> <%= members[key].last_name %></a></span>
-								</li>
+								<a href="person/<%= members[key].id %>">
+									<li>
+										<span class="name"><%= members[key].first_name %> <%= members[key].last_name %></span>
+									</li>
+								</a>
 							<% } %>
 						</ul>
 					</div>
