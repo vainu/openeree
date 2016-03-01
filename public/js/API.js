@@ -12,9 +12,11 @@ var API = new(function() {
     App.loader.show();
     if (CACHE.hasOwnProperty(path) && !nocache) {
       cb(CACHE[path]);
+      App.loader.hide();
     } else {
       $.get(HOST + path, function(data) {
         cb(data);
+        App.loader.hide();
       });
     }
   }
