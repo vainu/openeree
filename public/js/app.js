@@ -67,7 +67,7 @@ var App = new(function(){
 
 		var loadMoreBttn = $('.load-more.topProcurers');
 		if(loadMoreBttn.length){
-			$(this).unbind('click').click(function(){
+			loadMoreBttn.unbind('click').click(function(){
 				API.get('aggregated/mostprocsby?order=-total_amount&offset=' + offset + '&limit' + 100, function(data){
 					for(var key in data){
 						var template = '<li>'+
@@ -100,7 +100,7 @@ var App = new(function(){
 
 		var loadMoreBttn = $('.load-more.topProcurements');
 		if(loadMoreBttn.length){
-			$(this).unbind('click').click(function(){
+			loadMoreBttn.unbind('click').click(function(){
 				API.get('aggregated/mostprocsto?order=-total_amount&offset=' + offset + '&limit' + 100, function(data){
 					for(var key in data){
 						var template = '<li>'+
