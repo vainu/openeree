@@ -8,7 +8,12 @@ module.exports = function () {
     let app = express.Router();
 
     app.get('/', function (req, res) {
-        let q = db.select().from('person');
+        let q = db.select('*', db.raw("CONCAT(first_name, ' ', last_name) AS full_name")).from('person');
+
+        if (req.query.full_name) {
+            q.whereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ['%'+ req.query.full_name +'%']);
+            console.log('Adding where', q.toString());
+        }
 
         dbUtils.sendResponse(q, req, res);
     });
