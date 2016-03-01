@@ -10,6 +10,7 @@ module.exports = function () {
     let employeesQ = db
         .select()
         .join('person', 'company_employee.employee_id', 'person.id')
+        .join('company_role', 'company_employee.role_id', 'company_role.id')
         .from('company_employee');
 
 
