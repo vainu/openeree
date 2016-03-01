@@ -7,25 +7,31 @@
 				<h3>Erakonnad (<%= parties.length %>)</h3>
 				<ul class="top-list">
 					<% for(var key in parties){%>
-						<li>
-							<span class="name"><a href="party/<%= parties[key].id %>"><%= parties[key].name %></a></span>
-						</li>
+						<a href="party/<%= parties[key].id %>">
+							<li>
+								<span class="name"><%= parties[key].name %></span>
+							</li>
+						</a>
 					<% } %>
 				</ul>
 				<h3>Isikud (<%= persons.length %>)</h3>
 				<ul class="top-list">
 					<% for(var key in persons){%>
-						<li>
-							<span class="name"><a href="person/<%= persons[key].id %>"><%= persons[key].first_name %> <%= persons[key].last_name %></a></span>
-						</li>
+						<a href="person/<%= persons[key].id %>">
+							<li>
+								<span class="name"><%= persons[key].first_name %> <%= persons[key].last_name %></span>
+							</li>
+						</a>
 					<% } %>
 				</ul>
 				<h3>Ettevõtted (<%= companies.length %>)</h3>
 				<ul class="top-list">
 					<% for(var key in companies){%>
-						<li>
-							<span class="name"><a href="company/<%= companies[key].id %>"><%= companies[key].name %></a></span>
-						</li>
+						<a href="company/<%= companies[key].id %>">
+							<li>
+								<span class="name"><%= companies[key].name %></span>
+							</li>
+						</a>
 					<% } %>
 				</ul>
 		</div>

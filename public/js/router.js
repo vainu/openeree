@@ -12,6 +12,10 @@ Router.use('/', function(req) {
   Renderer.render('landing', req, {});
 });
 
+Router.use('/info', function(req) {
+  Renderer.render('info', req, {});
+});
+
 Router.use('/procurements/topWinners', function(req){
   API.procurements.getTopWinners(function(data){
     Renderer.render('topProcWinners', req, {procurements : data});
