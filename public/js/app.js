@@ -70,13 +70,10 @@ var App = new(function(){
 			loadMoreBttn.unbind('click').click(function(){
 				API.get('aggregated/mostprocsby?order=-total_amount&offset=' + offset + '&limit' + 100, function(data){
 					for(var key in data){
-						var template = '<li>'+
-											'<span class="name">'+
-												'<a href="#company/' + data[key].company_id +'">'+data[key].acquirer_name+'</a>'+
-											'</span>'+
-											'<span class="amount">'+ parseInt(data[key].total_amount).formatMoney(0, ' ', ' ') +	'<span class="currency">€</span>'+
-											'</span>'+
-										'</li>';
+						var template = '<a href="#company/' + data[key].company_id +'">'+
+										'<li><span class="name">'+data[key].acquirer_name+'</span><span class="amount">'+ parseInt(data[key].total_amount).formatMoney(0, ' ', ' ') +'</span></li>'+
+										'</a>';
+
 
 						$('.top-list#topProcurers').append(template);
 					}
@@ -103,13 +100,12 @@ var App = new(function(){
 			loadMoreBttn.unbind('click').click(function(){
 				API.get('aggregated/mostprocsto?order=-total_amount&offset=' + offset + '&limit' + 100, function(data){
 					for(var key in data){
-						var template = '<li>'+
-											'<span class="name">'+
-												'<a href="#company/' + data[key].company_id +'">'+data[key].provider_name+'</a>'+
-											'</span>'+
-											'<span class="amount">'+ parseInt(data[key].total_amount).formatMoney(0, ' ', ' ') +	'<span class="currency">€</span>'+
-											'</span>'+
-										'</li>';
+						var template = '<a href="#company/' + data[key].company_id +'">'+
+											'<li><span class="name">'+ data[key].provider_name+'</span>'+
+												'<span class="amount">'+ parseInt(data[key].total_amount).formatMoney(0, ' ', ' ') +'</span>'+
+											'</li>'+
+										'</a>';
+
 
 						$('.top-list#topProcWinners').append(template);
 					}
