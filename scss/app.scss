@@ -226,6 +226,13 @@ h3 {
 	.resource-text {
 		font-size: rem-calc(12);
 	}
+	.logo-list {
+		margin-top: 60px;
+		img {
+			display: inline-block;
+			margin: 10px;
+		}
+	}
 }
 .content.party-list {
 	.party {

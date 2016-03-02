@@ -4048,6 +4048,12 @@ h3 {
 .content.landing .resource-text {
   font-size: 0.75rem; }
 
+.content.landing .logo-list {
+  margin-top: 60px; }
+  .content.landing .logo-list img {
+    display: inline-block;
+    margin: 10px; }
+
 .content.party-list .party {
   background-color: #FFF;
   position: relative;
