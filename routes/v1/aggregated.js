@@ -36,6 +36,7 @@ module.exports = function () {
                 'acquirer.reg_code AS acquirer_reg_code'
             )
             .sum('end_price AS total_amount')
+            .where('status', '<>', 'cancelled')
             .groupBy('acquirer.reg_code');
 
         dbUtils.sendResponse(q, req, res, false, [employeeSubQ]);
@@ -49,6 +50,7 @@ module.exports = function () {
                 'acquirer.reg_code AS acquirer_reg_code'
             )
             .sum('end_price AS total_amount')
+            .where('status', '<>', 'cancelled')
             .groupBy('acquirer.reg_code');
 
         let procsQ = procQ.clone()
@@ -58,6 +60,7 @@ module.exports = function () {
                 'acquirer.name AS acquirer_name',
                 'acquirer.reg_code AS acquirer_reg_code'
             )
+            .where('status', '<>', 'cancelled')
             .orderBy('signed_on');
 
         dbUtils.sendResponse(q, req, res, false, [{
@@ -76,6 +79,7 @@ module.exports = function () {
                 'provider.reg_code AS provider_reg_code'
             )
             .sum('end_price AS total_amount')
+            .where('status', '<>', 'cancelled')
             .groupBy('provider.reg_code');
 
 
@@ -90,6 +94,7 @@ module.exports = function () {
                 'provider.reg_code AS provider_reg_code'
             )
             .sum('end_price AS total_amount')
+            .where('status', '<>', 'cancelled')
             .groupBy('provider.reg_code');
 
         let procsQ = procQ.clone()
@@ -99,6 +104,7 @@ module.exports = function () {
                 'acquirer.name AS acquirer_name',
                 'acquirer.reg_code AS acquirer_reg_code'
             )
+            .where('status', '<>', 'cancelled')
             .orderBy('signed_on');
 
         dbUtils.sendResponse(q, req, res, false, [{
