@@ -53,7 +53,8 @@ module.exports = function () {
 
         let procQ = db
             .select()
-            .from('procurement');
+            .from('procurement')
+            .orderBy('procurement.end_price', 'desc');
 
 
         dbUtils.sendResponse(q, req, res, true, [{
