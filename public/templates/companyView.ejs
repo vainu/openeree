@@ -6,6 +6,7 @@
 		<div class="small-12 columns">
 
 			<h1 class="name"><%= company.name %></h1>
+			<a href="https://www.inforegister.ee/otsing/<%= company.reg_code%>" target="_new"><%= company.reg_code %></a>
 			<h4 class="subheader">Firma</h4>
 
 			<div>
@@ -34,6 +35,11 @@
 											<span class="amount"><%= parseInt(company.procsTo[key].contract_price) %>€</span>
 										</div>
 										</div>
+										<div class="row">
+											<div class="small-12 columns">
+												<span class="time"><%= company.procsTo[key].signed_on.substr(8,2) %>.<%= company.procsTo[key].signed_on.substr(5,2) %>.<%= company.procsTo[key].signed_on.substr(0,4) %></span>
+											</div>
+										</div>
 									</li>
 								</a>
 							<% } %>
@@ -51,6 +57,11 @@
 								</div>
 								<div class="small-4 columns">
 									<span class="amount"><%= parseInt(company.procsBy[key].contract_price) %>€</span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="small-12 columns">
+									<span class="time"><%= company.procsBy[key].signed_on.substr(8,2) %>.<%= company.procsBy[key].signed_on.substr(5,2) %>.<%= company.procsBy[key].signed_on.substr(0,4) %></span>
 								</div>
 							</div>			
 						</li>

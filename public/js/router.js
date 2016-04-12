@@ -48,7 +48,10 @@ Router.use('/person/:id', function(req){
 
 Router.use('/parties', function(req){
   API.party.getAll(function(data){
-    Renderer.render('partyList', req, {parties : data});
+    Renderer.render('partyList', req, {parties : data}, function(){
+      Graph.parties.fundingsAndFees();
+      Graph.parties.partiesMembers();
+    });
   });
 });
 
@@ -71,7 +74,9 @@ Router.use('/party/:id', function(req){
       },20000);
     }
   }, function(err, result){
-    Renderer.render('partyView', req, {party : result.party, donators : result.donators, members : result.members});
+    Renderer.render('partyView', req, {party : result.party, donators : result.donators, members : result.members}, function(){
+      Graph.parties.fundingsAndFeesById(result.party.id);
+    });
   })
 });
 

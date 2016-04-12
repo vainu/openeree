@@ -5,16 +5,22 @@
 	<div class="row">
 		<div class="small-12 columns">
 			<h2 class="page-title">Erakonnad</h2>
-			<% for(var key in parties){%>
-				<div class="medium-6 large-4 columns text-center">
-					<a href="party/<%= parties[key].id %>" class="list party">
-						<div class="side-color" style="background-color: <%= parties[key].metadata.color %>"></div>
-						<img class="party-image" src="<%= parties[key].metadata.image %>" alt="">
-						<h4><%= parties[key].name %></h4>
-					</a>
-				</div>
-			<% } %>
+			<div class="graph-container" id="fundingAndFees" style="width: 100%; height: 500px;"></div>
+			<div class="row">
+				<% for(var key in parties){%>
+					<div class="medium-6 large-4 columns text-center">
+						<a href="party/<%= parties[key].id %>" class="list party">
+							<div class="side-color" style="background-color: <%= parties[key].metadata.color %>"></div>
+							<img class="party-image" src="<%= parties[key].metadata.image %>" alt="">
+							<h4><%= parties[key].name %></h4>
+						</a>
+					</div>
+				<% } %>
+			</div>
+			
+			<div class="graph-container" id="partiesMembers" style="width: 100%; height: 500px;"></div>
 		</div>
 	</div>
 	
 </div>
+

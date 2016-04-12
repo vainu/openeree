@@ -2,7 +2,9 @@ var API = new(function() {
   var DEBUG = true;
   var CACHE = {};
   var CACHE_UPDATE = null;
-  var CACHE_MAP = [];
+  var CACHE_MAP = [
+    '/party'
+  ];
 
   var HOST = 'http://opener.ee/api/v1/';
 
@@ -12,14 +14,18 @@ var API = new(function() {
     
     
     if (CACHE.hasOwnProperty(path) && !nocache) {
+      console.log('Got from cache: ' + path);
       cb(CACHE[path]);
       App.loader.hide();
     } else {
       $.get(HOST + path, function(data) {
         cb(data);
-        
+        CACHE_MAP.push(path);
+        CACHE[path] = data;
+        //App.loader.hide();
       });
     }
+
   }
 
   function getSearch(search, cb) {

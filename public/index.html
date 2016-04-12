@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="js/renderer.js"></script>
 	<script type="text/javascript" src="js/API.js"></script>
 	<script type="text/javascript" src="js/router.js"></script>
+	<script type="text/javascript" src="js/Graphs.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 </head>
 
@@ -39,6 +40,12 @@
   ga('create', 'UA-24117267-58', 'auto');
   ga('send', 'pageview');
 
+	google.charts.load('current', {packages: ['corechart', 'bar']});
+
+
+  $(document).ready(function(){
+  	$('.loader').removeClass('show');
+  });
 </script>
 </body>
 </html>
